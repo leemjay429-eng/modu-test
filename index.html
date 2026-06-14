@@ -1,1658 +1,1209 @@
+
   <script>
   (function(){
     try{
+      var head=document.head||document.getElementsByTagName('head')[0]||document.documentElement;
+
       if(!document.querySelector('meta[name="viewport"]')){
         var m=document.createElement('meta');
         m.setAttribute('name','viewport');
         m.setAttribute('content','width=device-width, initial-scale=1');
-        (document.head||document.getElementsByTagName('head')[0]||document.documentElement).appendChild(m);
+        head.appendChild(m);
+      }
+
+      /* 인트로(히어로) 이미지를 파싱 시작 시점에 최우선으로 미리 받기 */
+      if(!document.querySelector('link[rel="preload"][data-hbo-hero]')){
+        var pl=document.createElement('link');
+        pl.setAttribute('rel','preload');
+        pl.setAttribute('as','image');
+        pl.setAttribute('href','img/intro.webp');
+        pl.setAttribute('fetchpriority','high');
+        pl.setAttribute('data-hbo-hero','1');
+        head.appendChild(pl);
+      }
+
+      /* 폰트 CDN 연결을 미리 열어 두기 (이미지와 연결 경합 줄임) */
+      if(!document.querySelector('link[rel="preconnect"][data-hbo-cdn]')){
+        var pc=document.createElement('link');
+        pc.setAttribute('rel','preconnect');
+        pc.setAttribute('href','https://cdn.jsdelivr.net');
+        pc.setAttribute('crossorigin','');
+        pc.setAttribute('data-hbo-cdn','1');
+        head.appendChild(pc);
       }
     }catch(e){}
   })();
   </script>
 
 
-<!-- ===== 전남광주통합특별시 Q&A 상세페이지 (CMS 임베드용 · 라벤더 / 펼침형 / 반응형) ===== -->
+
+<!-- ===================== 모두의광주 :: 6월 호국보훈의 달 상세페이지 ===================== -->
 <div class="contents_div">
-  <article class="gjnq-root" itemscope itemtype="https://schema.org/Article">
-    <section class="gjhs-hero">
-      <div class="gjhs-bg-img">
-        <img src="img/배경.webp" alt="전남광주 특별시 핵심 질문 총정리" class="gjhs-bg" />
-        <div class="gjhs-float-wrap" aria-hidden="true">
-          <img src="img/플로팅.webp" alt="전남광주특별시 Q&A" class="gjhs-float" />
-        </div>
-      </div>
+<div class="hbo-root">
 
-      <div class="gjhs-ticker-wrap" aria-label="주요 질문 목록">
-        <div class="gjhs-ticker">
-          <span class="gjhs-ticker-item">Q. 통합 이후엔 주소를 어떻게 써야 하나요?</span>
-          <span class="gjhs-ticker-item">Q. 통합하면 왜 의료서비스가 좋아진다는 걸까요?</span>
-          <span class="gjhs-ticker-item">Q. 복지 지원금액이 달라지나요?</span>
-          <span class="gjhs-ticker-item">Q. 통합 이후엔 주소를 어떻게 써야 하나요?</span>
-          <span class="gjhs-ticker-item">Q. 통합하면 왜 의료서비스가 좋아진다는 걸까요?</span>
-          <span class="gjhs-ticker-item">Q. 복지 지원금액이 달라지나요?</span>
-        </div>
-      </div>
-    </section>
-
-    <div class="gjnq-body">
-
-      <!-- 인트로 -->
-      <div class="gjnq-intro">
-        <p class="gjnq-intro__lead">7월 1일, 우리는 모두 <b>특별시민</b>이 됩니다.<br>내 일상과 직접 맞닿은 변화부터 궁금했던 질문까지,<br>전남광주통합특별시 특별법을
-          Q&amp;A로 쉽게 풀어드려요.</p>
-        <div class="gjnq-intro__date">
-          <span>공식 출범</span>
-          <strong>2026<i>.</i>07<i>.</i>01</strong>
-        </div>
-      </div>
-
-      <!-- 목차 -->
-      <nav class="gjnq-toc" aria-label="목차">
-        <div class="gjnq-toc__scroll">
-          <a href="#gq-1">기본 변화</a>
-          <a href="#gq-2">일상 변화</a>
-          <a href="#gq-3">이런 게 걱정돼요</a>
-          <a href="#gq-4">혜택·복지</a>
-          <a href="#gq-5">세금·지원</a>
-          <a href="#gq-ask">질의응답 게시판</a>
-        </div>
-      </nav>
-
-      <main class="gjnq-main">
-
-        <!-- SECTION 1 -->
-        <section class="gjnq-sec" id="gq-1">
-          <div class="gjnq-sec__head">
-            <div class="gjnq-sec__head-left"><span class="gjnq-sec__no">01</span>
-              <h2 class="gjnq-sec__title">언제, 무엇이, 왜 바뀔까?</h2>
-            </div>
-            <!-- 우측 이미지 ▼ : 아래 <img>의 src="" 경로만 바꾸면 됩니다. 박스 크기는 CSS에서 고정돼 어떤 이미지든 위치·크기 동일하게 유지됩니다. -->
-            <div class="gjnq-sec__head-img">
-              <img
-              src="img/아이콘_달력.webp"
-                alt="">
-            </div>
-          </div>
-          <div class="gjnq-panel">
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합특별시, 정확한 명칭이
-                  뭔가요?</span></div>
-              <div class="gjnq-item__a">
-                <p>새 이름은 <b>‘전남광주통합특별시’</b>예요. 약칭은 <b>‘광주특별시’</b>랍니다. <span class="gjnq-ref">[특별법 제7조①]</span></p>
-                <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제7조"
-                  target="_blank" rel="noopener">제7조 전남광주통합특별시의 설치</a>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합은
-                  언제부터인가요?</span></div>
-              <div class="gjnq-item__a">
-                <p>전남광주통합특별시의 본격적인 시작은 <b>2026년 7월 1일</b>입니다. 다만 일부 조문은 시행일이 달라요.</p>
-                <ul class="gjnq-note">
-                  <li>제70조(이주배경학생 등을 위한 지원) → 2026. 8. 20. 시행</li>
-                  <li>제378조(산림문화·휴양·복지 특례) → 2026. 11. 13. 시행</li>
-                  <li>제356조(체육시설 설치·국제경기대회 지원) → 2026. 12. 3. 시행</li>
-                </ul>
-                <div class="gjnq-law-row">
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제70조"
-                    target="_blank" rel="noopener">제70조</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제378조"
-                    target="_blank" rel="noopener">제378조</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제356조"
-                    target="_blank" rel="noopener">제356조</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합의 이유는
-                  뭔가요?</span></div>
-              <div class="gjnq-item__a">
-                <figure class="gjnq-figure">
-                  <img src="img/통합의이유3.webp" alt="통합의 이유" />
-                </figure>
-                <p class="gjnq-figcredit">출처 : 매거진G 2026년 봄호 (공공정책위키 한겨레)</p>
-                <p>특별법 제1조에서는 전남광주통합특별시의 탄생 이유를 이렇게 정의하고 있어요.</p>
-                <ul class="gjnq-check">
-                  <li>수도권 일극 체제·지방소멸 위기 해소</li>
-                  <li>AI·에너지·반도체 첨단산업 육성과 농어업의 조화로운 발전</li>
-                  <li>실질적 지방분권과 국가균형성장</li>
-                </ul>
-                <p>그리고 그 바탕엔 5·18민주화운동과 민주·인권·정의·평화의 광주정신, 대동정신이 있답니다.</p>
-                <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제1조"
-                  target="_blank" rel="noopener">제1조 자세히 보기</a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION 2 -->
-        <section class="gjnq-sec" id="gq-2">
-          <div class="gjnq-sec__head">
-            <div class="gjnq-sec__head-left"><span class="gjnq-sec__no">02</span>
-              <h2 class="gjnq-sec__title">일상에 어떤 변화가?</h2>
-            </div>
-            <!-- 우측 이미지 ▼ : 아래 <img>의 src="" 경로만 바꾸면 됩니다. 박스 크기는 CSS에서 고정돼 어떤 이미지든 위치·크기 동일하게 유지됩니다. -->
-            <div class="gjnq-sec__head-img">
-              <img
-              src="img/아이콘_집.webp"
-                alt="">
-            </div>
-          </div>
-          <div class="gjnq-panel">
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합 이후엔 주소도
-                  달라지나요?</span></div>
-              <div class="gjnq-item__a">
-                <figure class="gjnq-figure">
-                  <img src="img/주소_보라색.webp" alt="통합의 이유" />
-                </figure>
-                <p>네. 전남광주통합특별시(약칭 광주특별시)로 공식적인 행정구역 명칭이 변경된 것이기 때문에 주소 표기 방식에도 변화가 생길 예정이에요.</p>
-                <p>기존의 ‘광주광역시 OO구’ 또는 ‘전라남도 OO군’으로 시작하던 주소가 <b>‘전남광주통합특별시 OO구’</b> 또는 <b>‘전남광주통합특별시 OO군’</b>으로 바뀌게 되는
-                  것이죠. 주소의 가장 앞부분인 ‘시·도’ 단위가 ‘전남광주통합특별시’로 바뀐다고 생각하시면 돼요.</p>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합하면 광주의 시·군·구는
-                  없어지나요?</span></div>
-              <div class="gjnq-item__a">
-                <p>아닙니다. 통합특별시 관할구역에 시·군·구를 그대로 둘 수 있으며, 명칭과 관할구역도 이전과 같아요.</p>
-                <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제9조"
-                  target="_blank" rel="noopener">제9조 시·군·구 등에 관한 특례</a>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">지역번호도
-                  통합되나요?</span></div>
-              <div class="gjnq-item__a">
-                <p>지역번호 통합에는 막대한 사회적 비용이 발생해요. 주민 불편과 사회적 비용을 최소화하기 위해 현행 <b>061(전남)</b>과 <b>062(광주)</b><b> 체제를 유지합니다.</b></p>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">우편번호도
-                  달라질까요?</span></div>
-              <div class="gjnq-item__a">
-                <p><b>우편번호는 그대로 유지됩니다!</b> 우편번호는 행정안전부의 ‘국가기초구역번호’를 기준으로 부여해요. 행정통합은 기초지방자치단체의 관할 구역이 현행 그대로 유지되기 때문에,
-                  구역 기반인 국가기초구역번호의 변경 사유가 없어 현재 우편번호는 그대로 유지됩니다.</p>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span
-                  class="gjnq-q__text">KIA타이거즈·광주FC·AI페퍼스·전남 드래곤즈 등 연고지 스포츠팀에 변화가 있을까요?</span></div>
-              <div class="gjnq-item__a">
-                <p>아직 결정된 것은 없지만 통합특별시 출범 이후 순차적으로 협약을 진행할 예정입니다. 다만 KIA타이거즈, 전남 드래곤즈는 민간기업이라 전남광주특별시로 바뀌었다고 해도 특별히 달라지는
-                  부분은 없습니다.</p>
-                <p>AI페퍼스도 민간기업에서 운영하고 있어 마찬가지로 특별시 전환에 따라 달라지는 부분은 없습니다. 다만 현재 연고지 협상은 진행 중에 있다는 사실! 광주시민구단인 광주FC의 경우
-                  통합에 따라 정식 명칭에는 변화가 있을 수 있으며, 약칭으로 ‘광주FC’를 유지할 가능성도 있어요.</p>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">전남광주통합특별시의 외국어
-                  표기법이 궁금해요!</span></div>
-              <div class="gjnq-item__a">
-                <p>전남광주통합특별시준비위원회에서 영문 명칭을 <b>‘Jeonnam-Gwangju Special Metropolitan City’</b>로 논의 중이지만, 아직 더 검토가 필요한
-                  단계입니다. 확정 표기는 자치법규 정비 과정에서 최종 결정될 예정이에요. 누리집 도메인은 지난 4월 선호도 조사를 거쳐 <b>jngj.go.kr</b>로 정해졌습니다.</p>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">신분증도 재발급 받아야
-                  하나요?</span></div>
-              <div class="gjnq-item__a">
-                <p>기존 신분증 사용이 가능합니다. <b>신분증 재발급은 필수가 아니에요.</b> 통합 이후 신분증 재발급을 원하신다면 가까운 동사무소에서 발급받으세요.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION 3 -->
-        <section class="gjnq-sec" id="gq-3">
-          <div class="gjnq-sec__head">
-            <div class="gjnq-sec__head-left"><span class="gjnq-sec__no">03</span>
-              <h2 class="gjnq-sec__title">이런 게 걱정돼요!</h2>
-            </div>
-            <!-- 우측 이미지 ▼ : 아래 <img>의 src="" 경로만 바꾸면 됩니다. 박스 크기는 CSS에서 고정돼 어떤 이미지든 위치·크기 동일하게 유지됩니다. -->
-            <div class="gjnq-sec__head-img"><img
-              src="img/아이콘_물음표.webp"
-                alt=""></div>
-          </div>
-          <div class="gjnq-panel">
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합하면 광주광역시와 전라남도는
-                  사라지는 건가요?</span></div>
-              <div class="gjnq-item__a">
-                <!-- <figure class="gjnq-figure">
-                  <img src="img/지도.webp" alt="통합의 이유" />
-                </figure> -->
-                <p>두 광역단체는 폐지되지만, 정부의 직할(直轄)로 통합특별시가 되어 <b>서울특별시에 준하는 지위</b>를 가진 더 큰 도시가 되었답니다. <span
-                    class="gjnq-ref">[특별법 제7조①]</span> 시·군·구의 명칭과 관할구역은 이전과 똑같아요! <span class="gjnq-ref">[제9조①②]</span>
-                </p>
-                <div class="gjnq-law-row">
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제7조"
-                    target="_blank" rel="noopener">제7조 설치</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제9조"
-                    target="_blank" rel="noopener">제9조 특례</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합으로 광주만의
-                  정체성은요?</span></div>
-              <div class="gjnq-item__a">
-                <p>걱정마세요! 이 역시 특별법이 보장하고 있어요. 한국 민주주의 발전에 기여한 역사적 가치와 ‘아시아문화중심도시’ 브랜드 정체성을 계승·발전시키는 정책은 필수랍니다.</p>
-                <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제5조"
-                  target="_blank" rel="noopener">제5조 통합특별시의 책무</a>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">옛 광주 자치구와 옛 전남
-                  시·군 사이의 권한 차이는 어떻게 조정하나요?</span></div>
-              <div class="gjnq-item__a">
-                <p>자치역량 불균형에 대해서도 대비하고 있습니다. 특별법에 따르면 통합특별시장은 자치권 강화 방안을 의무적으로 마련·시행해야 합니다. 옛 광주광역시 자치구의 행정·재정 자치권한을
-                  확대·조정하고, 도시계획 입안권과 과세권, 조직 운영 자율성 강화 방안 등을 포함해요.</p>
-                <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제10조"
-                  target="_blank" rel="noopener">제10조 시·군·구의 지위 및 권한 특례</a>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합 후 시청사는
-                  어디로?</span></div>
-              <div class="gjnq-item__a">
-                <p>현재 결정된 사항은 없습니다. 시청사 소재지는 법령에 따른 절차와 시·도민의 합의를 거쳐 객관적인 기준으로 선정될 예정이에요.</p>
-                <p>일단 시청사는 청사 이전에 따른 혼란 방지를 위해 기존 청사를 활용할 예정인데요, 특별법에 특별시의 청사는 <b>전남 동부, 무안, 광주 청사</b>를 균형있게 운영한다고 명시되어
-                  있어요.</p>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">이사를 하거나 인허가를 받을 때
-                  더 번거로워질까 걱정이에요.</span></div>
-              <div class="gjnq-item__a">
-                <p>기존 구청과 군청은 그대로 존재하게 되고, 또 디지털 행정 시스템 통합으로 관내 모든 민원실에서 <b>원스톱</b>으로 서비스를 받을 수 있기 때문에 행정의 중복성이 제거되어 처리
-                  속도가 빨라질 것으로 기대하고 있어요.</p>
-                <p>행정기관이 통합된다고 해서 민원을 보러 멀리 이동해야 하는 일은 없습니다. 오히려 전산 시스템이 통합되어 주소지 구분 없이 행정 서비스를 이용할 수 있는 범위가 넓어진답니다.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION 4 -->
-        <section class="gjnq-sec" id="gq-4">
-          <div class="gjnq-sec__head">
-            <div class="gjnq-sec__head-left"><span class="gjnq-sec__no">04</span>
-              <h2 class="gjnq-sec__title">혜택도 통합되나요?</h2>
-            </div>
-            <!-- 우측 이미지 ▼ : 아래 <img>의 src="" 경로만 바꾸면 됩니다. 박스 크기는 CSS에서 고정돼 어떤 이미지든 위치·크기 동일하게 유지됩니다. -->
-            <div class="gjnq-sec__head-img"><img
-              src="img/아이콘_복지.webp"
-              alt=""></div>
-          </div>
-          <div class="gjnq-panel">
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">광주시민도 전남의 문화공연이나
-                  체육시설 혜택을 받을 수 있나요?</span></div>
-              <div class="gjnq-item__a">
-                <figure class="gjnq-figure">
-                  <img src="img/acc.webp" alt="통합의 이유" />
-                </figure>
-                <p>통합 광역 단체 차원에서 권역별 문화·예술 거점을 재배치하고, 공공시설 이용료 할인이나 운영 체계를 단일화하여 지역 간 문화 격차를 해소하는 데 주력할 것이기 때문에 기대하셔도
-                  좋아요!</p>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합하면 의료서비스가 더
-                  좋아지는 게 가능할까요?</span></div>
-              <div class="gjnq-item__a">
-                <p>더 좋아질 수 있는 가능성이 열렸습니다. 특별법에 그 근거가 마련됐기 때문이에요. 특별법에는 중증·응급·분만·소아·정신 의료 같은 필수 진료를 다른 지역까지 나가지 않고 우리 지역
-                  안에서 받을 수 있는 체계를 만들겠다고 되어 있습니다.</p>
-                <p>국가와 통합특별시가 병원을 짓거나 의료인력을 늘리는 비용을 함께 부담하고, 병원이 부족한 지역을 먼저 챙기고 의사가 지역에 더 머물 수 있도록 돕는 지원도 가능하고요. 통합 전에
-                  광주와 전남에서 받았던 의료지원도 줄거나 중단되지 않도록 했습니다.</p>
-                <p>의료서비스가 개선될 수 있도록 국가와 통합특별시가 재정과 인력을 집중투입할 수 있는 <b>법적 근거와 의무 방향</b>이 마련됐다는 점에서 우선 의미가 있습니다.</p>
-                <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제324조"
-                  target="_blank" rel="noopener">제324조 공공의료 인프라 확충 특례</a>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합하면 정말 일자리가
-                  늘어날까요?</span></div>
-              <div class="gjnq-item__a">
-                <p>기대해 봐도 좋을 것 같아요. 일자리를 만들어 낼 <b>‘산업기반’</b>을 특별법에 빼곡히 담아뒀기 때문이에요. AI·반도체·에너지 같은 미래 산업을 키우고, 그 안에서 특히 청년
-                  일자리가 생기도록 설계되어 있어요.</p>
-                <p class="gjnq-law-label">① AI 분야 법적 근거</p>
-                <div class="gjnq-law-row">
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제242조"
-                    target="_blank" rel="noopener">제242조 AI 클러스터</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제243조"
-                    target="_blank" rel="noopener">제243조 국가 AI 혁신거점</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제246조"
-                    target="_blank" rel="noopener">제246조 AI데이터 산업</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제248조"
-                    target="_blank" rel="noopener">제248조 에이전틱 AI 행정</a>
-                </div>
-                <p class="gjnq-law-label">② 반도체와 에너지 분야 법적 근거</p>
-                <div class="gjnq-law-row">
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제250조"
-                    target="_blank" rel="noopener">제250조 반도체 특화단지</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제228조"
-                    target="_blank" rel="noopener">제228조 에너지 자립도시</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제183조"
-                    target="_blank" rel="noopener">제183조 수소산업</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제230조"
-                    target="_blank" rel="noopener">제230조 해상풍력</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제261조"
-                    target="_blank" rel="noopener">제261조 이차전지</a>
-                </div>
-                <p>또 전남광주통합특별시가 <b>‘청년이 머무는 도시’</b>가 될 수 있도록 진흥기금·발전기금부터 청년특화구역, 고졸자 고용촉진까지 특별법으로 든든하게 지원할 예정이랍니다.</p>
-                <div class="gjnq-law-row">
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제224조"
-                    target="_blank" rel="noopener">제224조 청년창업기업 진흥기금</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제329조"
-                    target="_blank" rel="noopener">제329조 청년발전기금</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제328조"
-                    target="_blank" rel="noopener">제328조 청년특화구역</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제340조"
-                    target="_blank" rel="noopener">제340조 고졸자 고용촉진</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합 이후 고향사랑기부제는
-                  어떻게 변하나요?</span></div>
-              <div class="gjnq-item__a">
-                <p>고향사랑기부제는 <b>6.26~6.30</b>일까지 기부가 잠시 중단됩니다. 쉽게 예를 들어 볼게요! 고향사랑기부제는 본인 주소지를 제외한 다른 곳에만 기부가 가능하다는 것 알고
-                  계시죠? 만약 내가 광주광역시 북구에 살고 있다면? </p>
-                <ul class="gjnq-note">
-                  <li>통합 이전 <br> · 광주광역시청·북구청은 기부 불가 <br> · 북구청을 제외한 광주광역시 구청과 전라남도 도청 및 <span
-                      class="gjnq-nb">시·군은</span> 기부 가능</li>
-                  <li>통합 이후 <br> · 전남광주통합특별시청·북구청은 기부 불가<br> · 본인 주소지를 제외한 전남광주통합특별시 내 다른 <span
-                      class="gjnq-nb">시·군·구는</span> 기부 가능</li>
-                  <li class="gjnq-note-foot">&nbsp※ 통합 이후엔 본인 주소지를 제외한 전남광주통합특별시 내 다른 시군구 기부 가능</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION 5 -->
-        <section class="gjnq-sec" id="gq-5">
-          <div class="gjnq-sec__head">
-            <div class="gjnq-sec__head-left"><span class="gjnq-sec__no">05</span>
-              <h2 class="gjnq-sec__title">세금은 오르고 지원은 줄어들까요?</h2>
-            </div>
-            <!-- 우측 이미지 ▼ : 아래 <img>의 src="" 경로만 바꾸면 됩니다. 박스 크기는 CSS에서 고정돼 어떤 이미지든 위치·크기 동일하게 유지됩니다. -->
-            <div class="gjnq-sec__head-img"><img
-              src="img/아이콘_세금.webp"
-                alt=""></div>
-          </div>
-          <div class="gjnq-panel">
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합하면 세금이 오르지는
-                  않나요?</span></div>
-              <div class="gjnq-item__a">
-                <p>걱정하지 마세요. 통합을 이유로 종전에 누리던 행정·재정상 이익이 사라지거나 주민에게 새로운 부담이 추가되어서는 안 된다는 <b>“불이익 배제 원칙”</b>이 특별법에 명문화되어
-                  있거든요!</p>
-                <div class="gjnq-law-row">
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제11조"
-                    target="_blank" rel="noopener">제11조 다른 법령 적용상의 특례</a>
-                  <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제55조"
-                    target="_blank" rel="noopener">제55조 불이익 배제의 원칙</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">주민세와 자동차세도
-                  달라지나요?</span></div>
-              <div class="gjnq-item__a">
-                <p>자동차세와 주민세 모두 지방세에요. 자동차의 소재지나 본인의 주소를 기준으로 결정되기 때문에 통합 후에도 기본 원칙은 동일합니다.</p>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합이 되면 기존에 받았던
-                  복지급여, 그대로 받을 수 있나요?</span></div>
-              <div class="gjnq-item__a">
-                <p>특별법 제55조(불이익 배제의 원칙)에 따르면 ‘통합으로 인하여 종전에 누리던 행정상·재정상 이익이 상실되거나 지역주민에게 새로운 부담이 추가되어서는 아니 된다’고 규정하고 있어요.
-                  따라서 행정통합이 이루어져도 통합을 이유로 주거급여 등 기존 복지급여가 줄어들거나 새로운 부담이 생기지는 않습니다.</p>
-                <a class="gjnq-law" href="https://www.law.go.kr/법령/전남광주통합특별시설치를위한특별법/(20260701,21446,20260305)/제55조"
-                  target="_blank" rel="noopener">제55조 불이익 배제의 원칙</a>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">통합되면 중앙부처에서 받는
-                  보조금에 변화가 생기나요?</span></div>
-              <div class="gjnq-item__a">
-                <p>현재 부처 보조금의 교부, 집행, 정산 방식이 변경된다는 내용은 결정된 바가 없어요. 제도 변경이 추진될 경우 내부 지침을 마련해 공식적으로 안내할 예정입니다. 오히려 통합특별시가
-                  출범하면 <b>‘특별시’ 지위</b>에서 보조금을 받을 수 있는 기회가 더 늘어날 수 있습니다.</p>
-              </div>
-            </div>
-
-            <div class="gjnq-item">
-              <div class="gjnq-item__q"><span class="gjnq-q__badge">Q</span><span class="gjnq-q__text">전기차 보조금이나 상생카드 등
-                  지역별 특성에 맞는 지원정책들은 어떻게 되나요?</span></div>
-              <div class="gjnq-item__a">
-                <p>지역별로 지원 정책이 다른 전기차 보조금, 상생카드(지역화폐) 등은 <b>기존의 조건과 동일하게</b> 지원합니다. 다만 추후 정책결정에 따라 변화가 있을 수도 있어요.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 더 궁금한 점 -->
-        <section class="gjnq-ask" id="gq-ask" aria-label="추가 문의 안내">
-          <span class="gjnq-ask__badge">More Q&amp;A</span>
-          <p class="gjnq-ask__lead">기대가 큰 만큼 궁금한 것도 많은 <b>전남광주통합특별시</b>의 모든 것!</p>
-          <p class="gjnq-ask__desc">전남광주통합특별시에 대해 더 궁금한 것이 있다면, <br class="gjnq-ask__br">행정통합 Q&amp;A 누리집 질의응답 게시판을 이용해
-            주세요!</p>
-          <a class="gjnq-ask__btn" href="https://www.gwangju.go.kr/contentsView.do?pageId=www1073" target="_blank"
-            rel="noopener">행정통합 Q&amp;A 게시판 바로가기 <span aria-hidden="true">→</span></a>
-        </section>
-
-        <!-- 매거진G -->
-        <section class="gjnq-ask" aria-label="매거진G 안내">
-          <span class="gjnq-ask__badge">Magazine G</span>
-          <p class="gjnq-ask__lead"><b>시민들이 바라는</b> 광주전남행정통합은?</p>
-          <p class="gjnq-ask__desc">전남광주통합특별시를 향한 시민들의 생생한 목소리, 매거진G 특별시민편에서 만나보세요!</p>
-          <a class="gjnq-ask__btn"
-            href="https://news.gwangju.go.kr/pdfViewer2.es?mid=a40601000000&amp;bid=0002&amp;list_no=5230&amp;gubun=gallery"
-            target="_blank" rel="noopener">매거진G 특별시민편 보러가기 <span aria-hidden="true">→</span></a>
-        </section>
-
-        <!-- CTA -->
-        <section class="gjnq-cta">
-          <div class="gjnq-cta__inner">
-            <p class="gjnq-cta__kicker">새로운 이름, 더 넓어진 가능성!</p>
-            <h2 class="gjnq-cta__title">전남광주통합특별시가 만들어 갈 변화는 이제부터 시작입니다.</h2>
-            <div class="gjnq-cta__tags" aria-label="관련 태그">
-              <span class="gjnq-cta__tag">#전남광주통합특별시</span>
-              <span class="gjnq-cta__tag">#광주특별시</span>
-              <span class="gjnq-cta__tag">#전남광주통합</span>
-              <span class="gjnq-cta__tag">#2026년7월1일출범</span>
-              <span class="gjnq-cta__tag">#행정통합</span>
-              <span class="gjnq-cta__tag">#통합특별시설치특별법</span>
-              <span class="gjnq-cta__tag">#통합되면뭐가달라지나요</span>
-              <span class="gjnq-cta__tag">#전남광주통합혜택</span>
-              <span class="gjnq-cta__tag">#AI수도전남광주</span>
-              <span class="gjnq-cta__tag">#지방분권국가균형발전</span>
-            </div>
-          </div>
-        </section>
-
-      </main>
-
-      <footer class="gjnq-foot">
-        <p>※ 위 내용은 「전남광주통합특별시 설치를 위한 특별법」(법률 제21446호, 2026. 3. 5. 제정, 7. 1. 시행) 내용에 기초하여 작성된 자료이며, 국가법령정보센터 및
-          광주광역시·전라남도·광주광역시의회 행정통합 질의답변 등을 참고하였습니다.</p>
-      </footer>
-
-    </div>
-  </article>
-
-  <style>
-    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
-
-    /* ===== Reset (scoped) ===== */
-    .contents_div .gjnq-root,
-    .contents_div .gjnq-root * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* ===== Tokens & wrap ===== */
-    .contents_div {
-      --ink: #2A2547;
-      --bg: #F4F0FC;
-      --violet: #A78BFA;
-      --purple: #C084FC;
-      --magenta: #E879F9;
-      --pink: #F472B6;
-      --sky: #60A5FA;
-      --deep: #7C3AED;
-      --violet-solid: #9A74F0;
-      --soft: #F1E9FE;
-      --card: #FFFFFF;
-      --muted: #6E6791;
-      --line: #EFE7FB;
-      --grad: linear-gradient(90deg, #A78BFA 0%, #C084FC 50%, #E879F9 100%);
-      --shadow: 0 10px 30px -14px rgba(150, 90, 220, .45);
-    }
-
-    .contents_div .gjnq-root {
-      max-width: 800px;
-      margin: 0 auto;
-      background: linear-gradient(180deg, #EFE9FB 0%, #F6F2FD 22%, #F8F4FE 100%);
-      color: var(--ink);
-      font-family: 'Pretendard', 'Pretendard Variable', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-      font-size: 16px;
-      line-height: 1.74;
-      letter-spacing: -.01em;
-      -webkit-font-smoothing: antialiased;
-      word-break: keep-all;
-      overflow: hidden;
-    }
-
-    .contents_div .gjnq-root a {
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 400;
-    }
-
-    .contents_div .gjnq-root b {
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    /* ===== HERO (re-scoped from gjhs) ===== */
-    .contents_div .gjhs-hero {
-      display: block;
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      overflow: hidden;
-      position: relative;
-      font-size: 0;
-      line-height: 0;
-      box-sizing: border-box;
-    }
-
-    .contents_div .gjhs-bg-img {
-      position: relative;
-      width: 100%;
-      display: block;
-    }
-
-    .contents_div .gjhs-bg {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    .contents_div .gjhs-float-wrap {
-      position: absolute;
-      top: 11%;
-      right: 27%;
-      width: 45%;
-      animation: gjhs-gentleYBounce 2.7s ease-in-out infinite;
-      transform-origin: center center;
-      filter: drop-shadow(0 12px 24px rgba(160, 100, 220, .28));
-    }
-
-    .contents_div .gjhs-float {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    @keyframes gjhs-gentleYBounce {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      16% {
-        transform: translateY(-8px);
-      }
-
-      31% {
-        transform: translateY(-1px);
-      }
-
-      41% {
-        transform: translateY(-4px);
-      }
-
-      56% {
-        transform: translateY(0);
-      }
-    }
-
-    .contents_div .gjhs-ticker-wrap {
-      width: 100%;
-      overflow: hidden;
-      background: linear-gradient(90deg, #A78BFA 0%, #C084FC 50%, #E879F9 100%);
-      padding: 18px 0;
-      position: relative;
-    }
-
-    .contents_div .gjhs-ticker-wrap::before,
-    .contents_div .gjhs-ticker-wrap::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 60px;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .contents_div .gjhs-ticker-wrap::before {
-      left: 0;
-      background: linear-gradient(to right, #A78BFA, transparent);
-    }
-
-    .contents_div .gjhs-ticker-wrap::after {
-      right: 0;
-      background: linear-gradient(to left, #E879F9, transparent);
-    }
-
-    .contents_div .gjhs-ticker {
-      display: flex;
-      gap: 0;
-      width: max-content;
-      animation: gjhs-ticker-scroll 22s linear infinite;
-    }
-
-    .contents_div .gjhs-ticker-item {
-      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      color: #fff;
-      white-space: nowrap;
-      padding: 0 48px;
-      letter-spacing: .01em;
-      line-height: 1;
-    }
-
-    @keyframes gjhs-ticker-scroll {
-      0% {
-        transform: translateX(0);
-      }
-
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .contents_div .gjhs-ticker-wrap:hover .gjhs-ticker {
-      animation-play-state: paused;
-    }
-
-    /* ===== Body wrapper ===== */
-    .contents_div .gjnq-body {
-      padding: 0 50px 72px;
-    }
-
-    /* ===== Intro ===== */
-    .contents_div .gjnq-intro {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 34px 0 8px;
-      flex-wrap: wrap;
-    }
-
-    .contents_div .gjnq-intro__lead {
-      flex: 1 1 0;
-      min-width: 0;
-      max-width: 520px;
-      font-size: 17px;
-      line-height: 1.7;
-      color: #46406A;
-      font-weight: 500;
-    }
-
-    .contents_div .gjnq-intro__date {
-      flex: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      padding: 14px 22px;
-      border-radius: 18px;
-      background: #fff;
-      box-shadow: var(--shadow);
-    }
-
-    .contents_div .gjnq-intro__date span {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--deep);
-      letter-spacing: .03em;
-    }
-
-    .contents_div .gjnq-intro__date strong {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--ink);
-      font-variant-numeric: tabular-nums;
-      letter-spacing: .01em;
-    }
-
-    .contents_div .gjnq-intro__date i {
-      font-style: normal;
-      color: var(--magenta);
-      margin: 0 1px;
-    }
-
-    /* ===== TOC (sticky) ===== */
-    .contents_div .gjnq-toc {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      margin: 16px -50px 0;
-      padding: 12px 50px;
-      background: rgba(244, 240, 252, .9);
-      backdrop-filter: saturate(160%) blur(10px);
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .contents_div .gjnq-toc__title {
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--deep);
-      flex: none;
-    }
-
-    .contents_div .gjnq-toc__scroll {
-      flex: 1;
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .contents_div .gjnq-toc__scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .contents_div .gjnq-toc__scroll a {
-      flex: 1 1 auto;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--deep);
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: #fff;
-      white-space: nowrap;
-      box-shadow: 0 4px 12px -8px rgba(150, 90, 220, .5);
-      transition: .18s;
-    }
-
-    .contents_div .gjnq-toc__scroll a:hover,
-    .contents_div .gjnq-toc__scroll a:focus-visible {
-      background: #DA8DEB;
-      color: #fff;
-      box-shadow: 0 6px 16px -6px rgba(218, 141, 235, .6);
-    }
-
-    /* ===== Sections ===== */
-    .contents_div .gjnq-main {
-      padding-top: 0;
-    }
-
-    .contents_div .gjnq-sec {
-      padding-top: 46px;
-      scroll-margin-top: 62px;
-    }
-
-    .contents_div .gjnq-sec__head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 16px;
-      padding-top: 13px;
-    }
-
-    .contents_div .gjnq-sec__head-left {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      min-width: 0;
-    }
-
-    /* 우측 이미지 박스 — 이미지 크기는 각 <img>의 style="width:..." 로 개별 조절 */
-    .contents_div .gjnq-sec__head-img {
-      flex: none;
-      line-height: 0;
-      width: 65px;
-      height: 65px;
-      margin-right: 13px;
-      position: relative;
-    }
-
-    .contents_div .gjnq-sec__head-img::before {
-      content: "";
-      position: absolute;
-      inset: -14px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .98);
-      filter: blur(14px);
-      z-index: 0;
-    }
-
-    /* ▼ 이미지 교체는 각 <img>의 src 값만 바꾸면 됩니다.
-       박스 크기(65px)가 고정돼 있고 contain으로 맞추므로
-       어떤 크기/비율 이미지를 넣어도 위치·크기가 동일하게 유지됩니다. */
-    .contents_div .gjnq-sec__head-img img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      position: relative;
-      z-index: 1;
-    }
-
-    .contents_div .gjnq-sec__no {
-      flex: none;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      text-align: center;
-      border-radius: 14px;
-      margin-left: 3px;
-      background: #DA8DEB;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 800;
-      font-variant-numeric: tabular-nums;
-      box-shadow: 0 8px 18px -8px rgba(218, 141, 235, .75);
-    }
-
-    .contents_div .gjnq-sec__title {
-      font-size: 25px;
-      font-weight: 800;
-      letter-spacing: -.02em;
-      line-height: 1.3;
-      word-break: keep-all;
-    }
-
-    /* ===== Panel + always-open items ===== */
-    .contents_div .gjnq-panel {
-      background: var(--card);
-      border-radius: 24px;
-      padding: 4px 30px;
-      box-shadow: 0 12px 34px -18px rgba(150, 90, 220, .5);
-    }
-
-    .contents_div .gjnq-item {
-      padding: 27px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .contents_div .gjnq-item:last-child {
-      border-bottom: none;
-    }
-
-    .contents_div .gjnq-item__q {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .contents_div .gjnq-q__badge {
-      flex: none;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-      border-radius: 50%;
-      background: #7CC8F5;
-      color: #fff;
-      font-size: 15px;
-      font-weight: 800;
-      margin-top: 1px;
-    }
-
-    .contents_div .gjnq-q__text {
-      flex: 1;
-      padding-right: 42px;
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--ink);
-      line-height: 1.5;
-      word-break: keep-all;
-    }
-
-    .contents_div .gjnq-item__a {
-      position: relative;
-      padding-left: 42px;
-      padding-right: 42px;
-    }
-
-    .contents_div .gjnq-item__a p {
-      font-size: 16px;
-      line-height: 1.78;
-      color: #4A4566;
-      margin-bottom: 10px;
-    }
-
-    .contents_div .gjnq-item__a p:last-child {
-      margin-bottom: 0;
-    }
-
-    .contents_div .gjnq-ref {
-      font-size: 14px;
-      font-weight: 700;
-      color: #2B85D9;
-    }
-
-    .contents_div .gjnq-check {
-      list-style: none;
-      margin: 6px 0 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .contents_div .gjnq-check li {
-      position: relative;
-      padding: 10px 14px 10px 38px;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.5;
-      background: #F3F3F5;
-      border-radius: 12px;
-    }
-
-    .contents_div .gjnq-check li::before {
-      content: '';
-      position: absolute;
-      left: 13px;
-      top: 50%;
-      width: 15px;
-      height: 15px;
-      transform: translateY(-50%);
-      background: #A2A7AF;
-      border-radius: 5px;
-    }
-
-    .contents_div .gjnq-check li::after {
-      content: '✓';
-      position: absolute;
-      left: 13px;
-      top: 50%;
-      width: 15px;
-      transform: translateY(-50%);
-      text-align: center;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 900;
-      line-height: 15px;
-    }
-
-    .contents_div .gjnq-note {
-      list-style: none;
-      margin: 4px 0 12px;
-      padding: 15px 16px;
-      background: #F3F3F5;
-      border-radius: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .contents_div .gjnq-note li {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--ink);
-      padding-left: 25px;
-      position: relative;
-      line-height: 1.7;
-      word-break: keep-all;
-    }
-
-    .contents_div .gjnq-nb {
-      white-space: nowrap;
-    }
-
-    .contents_div .gjnq-note li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 4px;
-      width: 15px;
-      height: 15px;
-      border-radius: 5px;
-      background: #A2A7AF;
-    }
-
-    .contents_div .gjnq-note li::after {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      top: 4px;
-      width: 15px;
-      text-align: center;
-      line-height: 15px;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 900;
-    }
-
-    .contents_div .gjnq-note li.gjnq-note-foot {
-      font-size: 12px;
-      font-weight: 400;
-      color: #8A85A0;
-      line-height: 1.6;
-      padding-left: 0;
-      word-break: keep-all;
-    }
-
-    .contents_div .gjnq-note li.gjnq-note-foot::before,
-    .contents_div .gjnq-note li.gjnq-note-foot::after {
-      content: none;
-    }
-
-
-    /* 이미지 프레임 (1498:727 비율) */
-    .contents_div .gjnq-figure {
-      margin: 4px 0 16px;
-      border-radius: 18px;
-      overflow: hidden;
-      aspect-ratio: 1112 / 753;
-      background: #F3F3F5;
-      box-shadow: 0 8px 24px rgba(123, 108, 178, .14), inset 0 0 0 1px rgba(123, 108, 178, .08);
-    }
-
-    .contents_div .gjnq-figure img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .contents_div .gjnq-item__a .gjnq-figcredit {
-      margin: -10px 4px 16px 0;
-      font-size: 11px;
-      line-height: 1.4;
-      color: #9A8FB8;
-      text-align: right;
-    }
-
-    .contents_div .gjnq-law-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    /* 링크버튼 위 여백 균일화: 앞 요소의 아래 여백 제거 */
-    .contents_div .gjnq-item__a p:has(+ .gjnq-law),
-    .contents_div .gjnq-item__a p:has(+ .gjnq-law-row),
-    .contents_div .gjnq-item__a .gjnq-note:has(+ .gjnq-law-row),
-    .contents_div .gjnq-item__a .gjnq-check:has(+ .gjnq-law-row) {
-      margin-bottom: 0;
-    }
-
-    .contents_div .gjnq-item__a .gjnq-law {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 14px;
-      padding: 9px 16px;
-      border-radius: 999px;
-      background: #E6F2FC;
-      font-size: 13px;
-      font-weight: 600;
-      color: #2B85D9;
-      line-height: 1.3;
-      word-break: keep-all;
-      text-decoration: none;
-      transition: .16s;
-    }
-
-    .contents_div .gjnq-item__a .gjnq-law::after {
-      content: '›';
-      font-weight: 600;
-      opacity: .7;
-    }
-
-    .contents_div .gjnq-item__a .gjnq-law:hover,
-    .contents_div .gjnq-item__a .gjnq-law:focus-visible {
-      background: #2B85D9;
-      color: #fff;
-    }
-
-    .contents_div .gjnq-law-row .gjnq-law {
-      margin-top: 0;
-    }
-
-    /* 법적 근거 라벨: 굵게 · 짙은 블루 · 위아래 여백 균일 */
-    .contents_div .gjnq-item__a p.gjnq-law-label {
-      margin-top: 22px;
-      margin-bottom: 0;
-      font-weight: 700;
-      color: #1B5FA8;
-    }
-
-    .contents_div .gjnq-item__a p.gjnq-law-label+.gjnq-law-row {
-      margin-top: 12px;
-    }
-
-    .contents_div .gjnq-item__a .gjnq-law-row+p {
-      margin-top: 22px;
-    }
-
-    /* ===== CTA ===== */
-    .contents_div .gjnq-cta {
-      position: relative;
-      margin-top: 54px;
-      padding: 54px 40px;
-      border-radius: 30px;
-      background-image: linear-gradient(150deg, #E8D9F8 0%, #E1DCF7 46%, #D2E2F6 100%);
-      color: var(--ink);
-      overflow: hidden;
-      text-align: center;
-    }
-
-    .contents_div .gjnq-cta__inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .contents_div .gjnq-cta__kicker {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--ink);
-      opacity: .82;
-      margin-bottom: 18px;
-      word-break: keep-all;
-    }
-
-    .contents_div .gjnq-cta__title {
-      font-size: 34px;
-      font-weight: 600;
-      margin: 0;
-      letter-spacing: -.02em;
-      line-height: 1.34;
-      word-break: keep-all;
-      color: var(--ink);
-    }
-
-    .contents_div .gjnq-cta__title b {
-      font-weight: 800;
-      color: var(--ink);
-    }
-
-    .contents_div .gjnq-cta__tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 32px;
-    }
-
-    .contents_div .gjnq-cta__tag {
-      padding: 8px 15px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .6);
-      font-size: 13px;
-      font-weight: 600;
-      color: #601ea7;
-      line-height: 1.2;
-      word-break: keep-all;
-    }
-
-    /* ===== Ask (추가 문의) ===== */
-    .contents_div .gjnq-ask {
-      margin-top: 48px;
-      padding: 40px 34px;
-      border-radius: 26px;
-      text-align: center;
-      background: var(--card);
-      border: 1.5px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .contents_div .gjnq-ask__badge {
-      display: inline-block;
-      padding: 6px 15px;
-      border-radius: 999px;
-      margin-bottom: 18px;
-      background: var(--soft);
-      color: var(--deep);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-
-    .contents_div .gjnq-ask__lead {
-      font-size: 19px;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.85;
-      word-break: keep-all;
-      letter-spacing: -.01em;
-    }
-
-    .contents_div .gjnq-ask__lead b {
-      font-weight: 800;
-      color: var(--deep);
-    }
-
-    .contents_div .gjnq-ask__desc {
-      margin-top: 14px;
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.7;
-      word-break: keep-all;
-    }
-
-    .contents_div .gjnq-root a.gjnq-ask__btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 26px;
-      padding: 12px 28px;
-      border-radius: 999px;
-      background-image: var(--grad);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      word-break: keep-all;
-      box-shadow: 0 10px 24px -10px rgba(150, 90, 220, .6);
-      transition: .18s;
-    }
-
-    .contents_div .gjnq-ask__btn span {
-      font-size: 18px;
-      transition: transform .18s;
-    }
-
-    .contents_div .gjnq-ask__btn:hover,
-    .contents_div .gjnq-ask__btn:focus-visible {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px -10px rgba(150, 90, 220, .7);
-    }
-
-    .contents_div .gjnq-ask__btn:hover span {
-      transform: translateX(3px);
-    }
-
-    /* ===== Foot ===== */
-    .contents_div .gjnq-foot {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
-    }
-
-    .contents_div .gjnq-foot p {
-      font-size: 13px;
-      line-height: 1.65;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    /* ===== Mobile ===== */
-    @media (max-width:768px) {
-      .contents_div .gjnq-root {
-        font-size: 14px;
-      }
-
-      /* 모바일: 라벨(①②) 그룹의 법령 링크만 한 줄에 하나씩 (칩 너비 유지) */
-      .contents_div .gjnq-law-label + .gjnq-law-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .contents_div .gjnq-body {
-        padding: 0 18px 52px;
-      }
-
-      .contents_div .gjnq-intro {
-        padding: 24px 0 4px;
-        gap: 14px;
-      }
-
-      .contents_div .gjnq-intro__lead {
-        font-size: 15px;
-        flex: 1 1 100%;
-      }
-
-      .contents_div .gjnq-intro__date {
-        padding: 12px 18px;
-      }
-
-      .contents_div .gjnq-intro__date strong {
-        font-size: 21px;
-      }
-
-      .contents_div .gjnq-toc {
-        margin: 12px 0 0;
-        padding: 10px 0;
-      }
-
-      .contents_div .gjnq-toc__scroll {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        justify-content: stretch;
-        gap: 8px;
-      }
-
-      .contents_div .gjnq-toc__scroll a {
-        padding: 8px 6px;
-        font-size: 12px;
-        white-space: nowrap;
-      }
-
-      .contents_div .gjnq-sec {
-        padding-top: 34px;
-      }
-
-      .contents_div .gjnq-sec__head {
-        gap: 11px;
-        margin-bottom: 14px;
-      }
-
-      .contents_div .gjnq-sec__head-left {
-        gap: 11px;
-      }
-
-      .contents_div .gjnq-sec__head-img {
-        width: 56px;
-        height: 56px;
-        margin-right: 10px;
-      }
-
-      .contents_div .gjnq-sec__no {
-        width: 34px;
-        height: 34px;
-        line-height: 34px;
-        font-size: 14px;
-        border-radius: 12px;
-      }
-
-      .contents_div .gjnq-sec__title {
-        font-size: 21px;
-      }
-
-      .contents_div .gjnq-panel {
-        padding: 2px 18px;
-        border-radius: 20px;
-      }
-
-      .contents_div .gjnq-item {
-        padding: 20px 0;
-      }
-
-      .contents_div .gjnq-item__q {
-        gap: 10px;
-        margin-bottom: 11px;
-      }
-
-      .contents_div .gjnq-q__badge {
-        width: 27px;
-        height: 27px;
-        line-height: 27px;
-        font-size: 14px;
-      }
-
-      .contents_div .gjnq-q__text {
-        font-size: 16px;
-        padding-right: 16px;
-      }
-
-      .contents_div .gjnq-q__br {
-        display: none;
-      }
-
-      .contents_div .gjnq-item__a {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
-      .contents_div .gjnq-item__a p {
-        font-size: 14px;
-      }
-
-      .contents_div .gjnq-check li {
-        font-size: 14px;
-        padding: 9px 13px 9px 36px;
-      }
-
-      .contents_div .gjnq-note li {
-        font-size: 14px;
-      }
-
-      .contents_div .gjnq-cta {
-        padding: 42px 22px;
-        border-radius: 24px;
-        margin-top: 46px;
-      }
-
-      .contents_div .gjnq-ask {
-        padding: 32px 22px;
-        border-radius: 22px;
-        margin-top: 40px;
-      }
-
-      .contents_div .gjnq-ask__lead {
-        font-size: 19px;
-        line-height: 1.5;
-      }
-
-      .contents_div .gjnq-ask__desc {
-        font-size: 14px;
-        margin-top: 12px;
-      }
-
-      .contents_div .gjnq-ask__br {
-        display: none;
-      }
-
-      .contents_div .gjnq-root a.gjnq-ask__btn {
-        font-size: 14px;
-        padding: 13px 22px;
-        margin-top: 22px;
-      }
-
-      .contents_div .gjnq-cta__kicker {
-        font-size: 15px;
-        margin-bottom: 14px;
-      }
-
-      .contents_div .gjnq-cta__tags {
-        gap: 7px;
-        margin-top: 26px;
-      }
-
-      .contents_div .gjnq-cta__tag {
-        font-size: 12px;
-        padding: 7px 13px;
-      }
-
-      .contents_div .gjhs-ticker-item {
-        font-size: 15px;
-        padding: 0 36px;
-      }
-
-      .contents_div .gjhs-ticker-wrap {
-        padding: 14px 0;
-      }
-    }
-
-    @media (max-width:700px) {
-      .contents_div .gjnq-cta__title {
-        font-size: 26px;
-        line-height: 1.4;
-      }
-    }
-
-    @media (max-width:430px) {
-      .contents_div .gjnq-body {
-        padding: 0 14px 46px;
-      }
-
-      .contents_div .gjnq-intro__date {
-        flex: 1 1 100%;
-        align-items: flex-start;
-      }
-
-      .contents_div .gjnq-sec__title {
-        font-size: 19px;
-      }
-
-      .contents_div .gjnq-sec__head-img {
-        width: 48px;
-        height: 48px;
-        margin-right: 8px;
-      }
-
-      .contents_div .gjnq-q__text {
-        font-size: 15px;
-      }
-
-      .contents_div .gjnq-panel {
-        padding: 2px 15px;
-      }
-
-      .contents_div .gjnq-cta__title {
-        font-size: 23px;
-      }
-    }
-
-    @media (max-width:374px) {
-      .contents_div .gjnq-toc__scroll a {
-        font-size: 11px;
-        padding: 8px 5px;
-      }
-    }
-
-    @media (prefers-reduced-motion:reduce) {
-      .contents_div .gjhs-float-wrap {
-        animation: none;
-      }
-
-      .contents_div .gjhs-ticker {
-        animation: none;
-      }
-    }
-
-    /* ===== CTA extra (more + button) ===== */
-    .contents_div .gjnq-cta__more {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--ink);
-      opacity: .82;
-      margin-top: 20px;
-      word-break: keep-all;
-    }
-
-    .contents_div .gjnq-cta__btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 14px;
-      padding: 12px 22px;
-      border-radius: 999px;
-      background: #fff;
-      color: var(--deep);
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.2;
-      word-break: keep-all;
-      box-shadow: 0 10px 24px -12px rgba(124, 58, 237, .55);
-      transition: .16s;
-    }
-
-    .contents_div .gjnq-cta__btn::after {
-      content: '›';
-      font-weight: 700;
-      opacity: .7;
-    }
-
-    .contents_div .gjnq-cta__btn:hover,
-    .contents_div .gjnq-cta__btn:focus-visible {
-      background: var(--deep);
-      color: #fff;
-    }
-
-    @media (max-width:768px) {
-      .contents_div .gjnq-cta__more {
-        font-size: 14px;
-        margin-top: 16px;
-      }
-
-      .contents_div .gjnq-cta__btn {
-        font-size: 13px;
-        padding: 11px 18px;
-      }
-    }
-  </style>
-
-  <script>
-    (function () {
-      var root = document.currentScript && document.currentScript.closest
-        ? document.currentScript.closest('.contents_div')
-        : document.querySelector('.contents_div');
-      if (!root) return;
-      root.querySelectorAll('.gjnq-toc__scroll a').forEach(function (a) {
-        a.addEventListener('click', function (e) {
-          var id = a.getAttribute('href');
-          if (!id || id.charAt(0) !== '#') return;
-          var t = root.querySelector(id);
-          if (!t) return;
-          e.preventDefault();
-          t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      });
-    })();
-  </script>
-
+  <!-- JSON-LD : SEO 구조화 데이터 -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "name":"전남광주통합특별시 시민 Q&A",
-    "inLanguage":"ko-KR",
-    "mainEntity":[
-      {"@type":"Question","name":"통합특별시, 정확한 명칭이 뭔가요?","acceptedAnswer":{"@type":"Answer","text":"새 이름은 ‘전남광주통합특별시’이며 약칭은 ‘광주특별시’입니다. (특별법 제7조①)"}},
-      {"@type":"Question","name":"통합은 언제부터인가요?","acceptedAnswer":{"@type":"Answer","text":"전남광주통합특별시는 2026년 7월 1일 본격 시작합니다. 다만 제70조는 2026.8.20., 제378조는 2026.11.13., 제356조는 2026.12.3.로 일부 조문 시행일이 다릅니다."}},
-      {"@type":"Question","name":"통합의 이유는 뭔가요?","acceptedAnswer":{"@type":"Answer","text":"특별법 제1조는 수도권 일극 체제·지방소멸 위기 해소, AI·에너지·반도체 첨단산업 육성과 농어업의 조화로운 발전, 실질적 지방분권과 국가균형성장을 통합 이유로 규정합니다. 그 바탕에는 5·18민주화운동과 광주정신, 대동정신이 있습니다."}},
-      {"@type":"Question","name":"통합 이후엔 주소도 달라지나요?","acceptedAnswer":{"@type":"Answer","text":"네. 시·도 단위가 ‘전남광주통합특별시’로 바뀝니다. 기존 ‘광주광역시 OO구’ 또는 ‘전라남도 OO군’이 ‘전남광주통합특별시 OO구/OO군’으로 변경됩니다."}},
-      {"@type":"Question","name":"통합하면 광주의 시·군·구는 없어지나요?","acceptedAnswer":{"@type":"Answer","text":"아닙니다. 통합특별시 관할구역에 시·군·구를 그대로 둘 수 있으며 명칭과 관할구역도 이전과 같습니다. (제9조)"}},
-      {"@type":"Question","name":"지역번호도 통합되나요?","acceptedAnswer":{"@type":"Answer","text":"막대한 사회적 비용과 주민 불편을 최소화하기 위해 현행 061(전남)과 062(광주) 체제를 당분간 유지하는 방안을 유력하게 검토하고 있습니다."}},
-      {"@type":"Question","name":"우편번호도 달라질까요?","acceptedAnswer":{"@type":"Answer","text":"우편번호는 그대로 유지됩니다. 행정안전부 국가기초구역번호 기준으로 부여되며, 기초지자체 관할구역이 유지되어 변경 사유가 없습니다."}},
-      {"@type":"Question","name":"연고지 스포츠팀에 변화가 있을까요?","acceptedAnswer":{"@type":"Answer","text":"출범 이후 순차적으로 협약을 진행할 예정입니다. KIA타이거즈·전남 드래곤즈·AI페퍼스는 민간기업이라 달라지는 부분은 없으며, 광주FC는 정식 명칭에 변화가 있을 수 있으나 약칭 ‘광주FC’ 유지 가능성이 있습니다."}},
-      {"@type":"Question","name":"전남광주통합특별시의 외국어 표기법은?","acceptedAnswer":{"@type":"Answer","text":"준비위원회에서 영문 명칭을 ‘Jeonnam-Gwangju Special Metropolitan City’로 논의 중이나 더 검토가 필요한 단계이며, 확정 표기는 자치법규 정비 과정에서 결정됩니다. 누리집 도메인은 4월 선호도 조사를 거쳐 jngj.go.kr로 정해졌습니다."}},
-      {"@type":"Question","name":"신분증도 재발급 받아야 하나요?","acceptedAnswer":{"@type":"Answer","text":"기존 신분증을 그대로 사용할 수 있으며 재발급은 필수가 아닙니다. 재발급을 원하면 가까운 동사무소에서 발급받으면 됩니다."}},
-      {"@type":"Question","name":"통합하면 광주광역시와 전라남도는 사라지나요?","acceptedAnswer":{"@type":"Answer","text":"두 광역단체는 폐지되지만 정부 직할로 서울특별시에 준하는 지위를 가진 통합특별시가 됩니다. 시·군·구의 명칭과 관할구역은 이전과 동일합니다. (제7조①·제9조①②)"}},
-      {"@type":"Question","name":"통합으로 광주만의 정체성은 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"특별법 제5조가 보장합니다. 한국 민주주의 발전에 기여한 역사적 가치와 ‘아시아문화중심도시’ 브랜드 정체성을 계승·발전시키는 정책이 필수입니다."}},
-      {"@type":"Question","name":"옛 광주 자치구와 옛 전남 시·군의 권한 차이는 어떻게 조정하나요?","acceptedAnswer":{"@type":"Answer","text":"통합특별시장은 자치권 강화 방안을 의무적으로 마련·시행해야 합니다. 옛 광주 자치구의 행정·재정 자치권한 확대·조정과 도시계획 입안권·과세권·조직 운영 자율성 강화 방안을 포함합니다. (제10조)"}},
-      {"@type":"Question","name":"통합 후 시청사는 어디로?","acceptedAnswer":{"@type":"Answer","text":"현재 결정된 바 없으며 법령 절차와 시·도민 합의를 거쳐 선정됩니다. 당분간 기존 청사를 활용하며, 특별법상 전남 동부·무안·광주 청사를 균형있게 운영합니다."}},
-      {"@type":"Question","name":"이사·인허가가 더 번거로워질까요?","acceptedAnswer":{"@type":"Answer","text":"기존 구청·군청은 그대로 존재하고 디지털 행정 시스템 통합으로 관내 모든 민원실에서 원스톱 서비스가 가능해 처리 속도가 빨라집니다. 멀리 이동할 필요가 없습니다."}},
-      {"@type":"Question","name":"광주시민도 전남 문화·체육시설 혜택을 받나요?","acceptedAnswer":{"@type":"Answer","text":"권역별 문화·예술 거점 재배치, 공공시설 이용료 할인 및 운영 체계 단일화로 지역 간 문화 격차 해소에 주력합니다."}},
-      {"@type":"Question","name":"통합하면 의료서비스가 더 좋아지나요?","acceptedAnswer":{"@type":"Answer","text":"더 좋아질 가능성이 열렸습니다. 중증·응급·분만·소아·정신 등 필수 진료를 지역 안에서 받을 수 있는 체계를 만들고, 국가와 통합특별시가 병원·의료인력 비용을 함께 부담하도록 법적 근거가 마련됐습니다. 기존 의료지원도 줄거나 중단되지 않습니다. (제324조)"}},
-      {"@type":"Question","name":"통합하면 정말 일자리가 늘어날까요?","acceptedAnswer":{"@type":"Answer","text":"AI·반도체·에너지 등 미래 산업기반과 청년 일자리·창업, 청년특화구역, 고졸자 고용촉진까지 특별법에 명시되어 있습니다. (제242·243·246·248·250·228·183·230·261·224·329·328·340조)"}},
-      {"@type":"Question","name":"통합 이후 고향사랑기부제는 어떻게 변하나요?","acceptedAnswer":{"@type":"Answer","text":"6.23~6.30 기부가 잠시 중단됩니다. 본인 주소지를 제외한 곳에만 기부할 수 있는 원칙은 유지되며, 통합 이후에는 본인 주소지를 제외한 전남광주통합특별시 내 다른 시·군·구에 기부할 수 있습니다."}},
-      {"@type":"Question","name":"통합하면 세금이 오르나요?","acceptedAnswer":{"@type":"Answer","text":"오르지 않습니다. 종전 이익 상실·새로운 부담 추가를 금지하는 ‘불이익 배제 원칙’이 특별법에 명문화되어 있습니다. (제11·55조)"}},
-      {"@type":"Question","name":"주민세와 자동차세도 달라지나요?","acceptedAnswer":{"@type":"Answer","text":"자동차세·주민세 모두 지방세로 자동차 소재지나 본인 주소 기준으로 결정되므로 통합 후에도 기본 원칙은 동일합니다."}},
-      {"@type":"Question","name":"통합 후 복지급여를 그대로 받을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"특별법 제55조 불이익 배제의 원칙에 따라 통합을 이유로 주거급여 등 기존 복지급여가 줄어들거나 새로운 부담이 생기지 않습니다."}},
-      {"@type":"Question","name":"중앙부처 보조금에 변화가 생기나요?","acceptedAnswer":{"@type":"Answer","text":"보조금 교부·집행·정산 방식 변경은 결정된 바 없으며 제도 변경 시 내부 지침을 마련해 안내합니다. 오히려 ‘특별시’ 지위에서 보조금 기회가 더 늘어날 수 있습니다."}},
-      {"@type":"Question","name":"전기차 보조금이나 상생카드 등은 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"지역별로 다른 전기차 보조금, 상생카드(지역화폐) 등은 기존 조건과 동일하게 지원합니다. 다만 추후 정책결정에 따라 변화가 있을 수 있습니다."}}
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "6월은 호국보훈의 달 — 전남광주통합특별시 현충시설과 문화행사",
+    "description": "6월 호국보훈의 달, 전남광주통합특별시의 현충시설 253곳과 전시·체험 문화행사를 모두의광주가 소개합니다. 산동교, 호남호국기념관, 나주 학생독립운동기념관 등 나라를 지킨 분들을 기억하는 장소를 만나보세요.",
+    "inLanguage": "ko",
+    "keywords": "호국보훈의 달, 현충일, 전남광주통합특별시, 현충시설, 호남호국기념관, 나주 학생독립운동기념관, 6·25전쟁, 광주 독립운동, 모두의광주",
+    "author": { "@type": "Organization", "name": "모두의광주" },
+    "publisher": { "@type": "Organization", "name": "광주광역시" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "전남광주통합특별시 현충시설",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "item": { "@type": "TouristAttraction", "name": "산동교", "address": "광주광역시 북구 동림동 115-1" } },
+      { "@type": "ListItem", "position": 2, "item": { "@type": "TouristAttraction", "name": "태안사 유격 항전지", "address": "곡성군 죽곡면 원달리 20-1" } },
+      { "@type": "ListItem", "position": 3, "item": { "@type": "TouristAttraction", "name": "광주광역시 6·25전쟁 호국영웅 명비", "address": "광주광역시 광산구 첨단월봉로 99" } },
+      { "@type": "ListItem", "position": 4, "item": { "@type": "TouristAttraction", "name": "무공수훈자 기념비", "address": "함평군 함평읍 중앙길 140-18" } },
+      { "@type": "ListItem", "position": 5, "item": { "@type": "TouristAttraction", "name": "호남호국기념관", "address": "순천시 원연향길 17" } },
+      { "@type": "ListItem", "position": 6, "item": { "@type": "TouristAttraction", "name": "나주 학생독립운동기념관", "address": "나주시 죽림길 26" } }
     ]
   }
   </script>
-</div>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hbo-hero" role="banner">
+    <h1 class="hbo-sr-only">6월은 호국보훈의 달 — 그날의 용기, 오늘의 우리. 현충시설과 기념행사로 기억하는 6월</h1>
+    <img class="hbo-hero__img" width="1600" height="1564"
+    src="img/intro.webp"
+         alt="호국보훈"
+         fetchpriority="high"
+         loading="eager"
+         decoding="async">
+         <div class="hbo-hero__body">
+      <ul class="hbo-summary hbo-reveal" aria-label="요약 정보">
+        <li><span class="hbo-summary__num">01</span> 전남광주통합특별시 현충시설을 한눈에</li>
+        <li><span class="hbo-summary__num">02</span> 모광이 추천하는, 특별하게 호국보훈의 달 기념하기</li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ===================== 본문 ===================== -->
+  <main class="hbo-main">
+
+    <!-- 6월을 호국보훈의 달이라 부르는 이유 -->
+    <section class="hbo-section hbo-reveal" aria-labelledby="hbo-why">
+      <p class="hbo-cat-eyebrow">헌신을 기리다</p>
+      <h2 class="hbo-h2" id="hbo-why">6월을 호국보훈의 달이라고 부르는 이유?</h2>
+      <p class="hbo-p">
+        6월이 호국보훈의 달로 지정된 근본적인 이유는 1950년 6월 25일 발발한
+        6·25 전쟁 때문이라고 할 수 있어요.
+      </p>
+
+      <div class="hbo-timeline">
+        <div class="hbo-timeline__item">
+          <span class="hbo-timeline__year">1963</span>
+          <span class="hbo-timeline__label">‘현충월간’ 시작</span>
+        </div>
+        <div class="hbo-timeline__line" aria-hidden="true"></div>
+        <div class="hbo-timeline__item">
+          <span class="hbo-timeline__year">1985</span>
+          <span class="hbo-timeline__label">‘호국보훈의 달’로 명칭 변경</span>
+        </div>
+        <div class="hbo-timeline__line" aria-hidden="true"></div>
+        <div class="hbo-timeline__item">
+          <span class="hbo-timeline__year">2026</span>
+          <span class="hbo-timeline__label">오늘날까지</span>
+        </div>
+      </div>
+
+      <p class="hbo-p">
+        의병의 날부터 현충일, 6·25전쟁 발발일, 제2연평해전과 독립운동 등
+        국가 수호를 위해 희생한 분들을 추모하기 위해 6월 한 달을
+        ‘호국보훈의 달’로 정하고, 추모·감사·화합의 기간을 보내며 나라를 지킨
+        분들의 공훈을 기억하고 감사하는 시간을 갖고 있어요.
+      </p>
+
+      <a class="hbo-inline-link" href="https://m.blog.naver.com/sandcastles81/224308982873" target="_blank" rel="noopener">
+        모두크루 안규선님이 취재한 제71회 현충일 추념식 보기
+        <span aria-hidden="true">→</span>
+      </a>
+    </section>
+
+    <!-- 스탯 박스 위 PNG 이미지 (아래 박스 위로 겹쳐 올라옴) -->
+    <section class="hbo-intro-img hbo-reveal" aria-hidden="true">
+      <img class="hbo-intro-img__png" src="img/현충시설253.webp" alt="" width="1200" height="600" loading="lazy">
+    </section>
+
+    <!-- 253곳 스탯 -->
+    <section class="hbo-stat hbo-reveal" aria-labelledby="hbo-stat-title">
+      <h2 class="hbo-h2 hbo-h2--light" id="hbo-stat-title">
+        전남광주통합특별시에만 현충시설이 무려 000개?
+      </h2>
+      <p class="hbo-stat__lead">독립과 호국에 관련된 현충시설이 무려—</p>
+
+      <div class="hbo-stat__big">
+        <span class="hbo-count" data-target="253">0</span>
+        <span class="hbo-stat__unit">곳</span>
+      </div>
+
+      <div class="hbo-stat__split">
+        <div class="hbo-stat__cell">
+          <span class="hbo-stat__region">광주광역시</span>
+          <span class="hbo-stat__value"><span class="hbo-stat__count" data-target="29">0</span><span class="hbo-stat__small">곳</span></span>
+        </div>
+        <span class="hbo-stat__plus" aria-hidden="true">+</span>
+        <div class="hbo-stat__cell">
+          <span class="hbo-stat__region">전라남도</span>
+          <span class="hbo-stat__value"><span class="hbo-stat__count" data-target="244">0</span><span class="hbo-stat__small">곳</span></span>
+        </div>
+      </div>
+
+      <p class="hbo-stat__note">
+        그만큼 전남광주통합특별시가 역사적 무게감이 큰 장소이며,
+        헌신한 이들을 잊지 않고 있다는 의미가 아닐까 싶은데요.
+        6월 호국보훈의 달에 방문하기 좋은 현충시설을 소개할게요.
+      </p>
+    </section>
+
+    <!-- 현충시설 1 : 전적지 -->
+    <section class="hbo-section hbo-reveal" aria-labelledby="hbo-cat1">
+      <p class="hbo-cat-eyebrow">현충시설 <span class="hbo-cat-num">1</span></p>
+      <h2 class="hbo-h2" id="hbo-cat1">기억해야 할 풍경들, 전적지</h2>
+
+      <article class="hbo-card">
+        <div class="hbo-box__text">
+        <h3 class="hbo-h3">산동교</h3>
+        <p class="hbo-addr"><span class="hbo-pin" aria-hidden="true">📍</span> 광주광역시 북구 동림동 115-1</p>
+        <p class="hbo-p">
+          1950년 7월 23일, 무기가 부족했던 군경 혼성부대가 북한군 전차 부대와
+          치열한 전투를 벌여 적의 남하를 지연시킨 곳.
+        </p>
+      </div>
+        <figure class="hbo-box__figure">
+          <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/산동교.webp" alt="" width="400" height="300" loading="lazy"></span>
+          <figcaption class="hbo-box__credit">*출처: 보훈문화종합포털 </figcaption>
+        </figure>
+      </article>
+
+      <article class="hbo-card">
+        <div class="hbo-box__text">
+        <h3 class="hbo-h3">태안사 유격 항전지</h3>
+        <p class="hbo-addr"><span class="hbo-pin" aria-hidden="true">📍</span> 곡성군 죽곡면 원달리 20-1</p>
+        <p class="hbo-p">
+          경찰과 학도병들이 압록교 전투 이후 퇴각하는 북한군과 맞서 싸웠던 장소로,
+          ‘태안사 경찰충혼탑’을 세워 의미를 기리는 중.
+        </p>
+      </div>
+        <figure class="hbo-box__figure">
+          <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/태안사 경찰충혼탑.webp" alt="" width="400" height="300" loading="lazy"></span>
+          <figcaption class="hbo-box__credit">*출처: 곡성군청 </figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <!-- 현충시설 2 : 기념비 -->
+    <section class="hbo-section hbo-reveal" aria-labelledby="hbo-cat2">
+      <p class="hbo-cat-eyebrow">현충시설 <span class="hbo-cat-num">2</span></p>
+      <h2 class="hbo-h2" id="hbo-cat2">그날의 헌신을 기억하며, 기념비</h2>
+
+      <article class="hbo-card">
+        <div class="hbo-box__text">
+        <h3 class="hbo-h3">광주광역시 6·25전쟁 호국영웅 명비</h3>
+        <p class="hbo-addr"><span class="hbo-pin" aria-hidden="true">📍</span> 광주광역시 광산구 첨단월봉로 99</p>
+        <p class="hbo-p">
+          광주광역시 출신 6·25전쟁 전사자 1,891명을 명비에 각자(刻字)하여
+          그들의 넋과 얼을 기리는 곳.
+        </p>
+      </div>
+        <figure class="hbo-box__figure">
+          <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/호국영웅명비.webp" alt="" width="400" height="300" loading="lazy"></span>
+          <figcaption class="hbo-box__credit">*출처: 보훈문화종합포털 </figcaption>
+        </figure>
+      </article>
+
+      <article class="hbo-card">
+        <div class="hbo-box__text">
+        <h3 class="hbo-h3">무공수훈자 기념비</h3>
+        <p class="hbo-addr"><span class="hbo-pin" aria-hidden="true">📍</span> 함평군 함평읍 중앙길 140-18</p>
+        <p class="hbo-p">
+          6·25전쟁과 베트남전쟁에 참전한 유공자와, 공훈을 세워 국가로부터
+          훈장을 수여받은 이 고장 출신 무공수훈자의 공적을 기리는 곳.
+        </p>
+      </div>
+        <figure class="hbo-box__figure">
+          <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/무공수훈자 기념비.webp" alt="" width="400" height="300" loading="lazy"></span>
+          <figcaption class="hbo-box__credit">*출처: 보훈문화종합포털 </figcaption>
+        </figure>
+      </article>
+
+      <aside class="hbo-note-box">
+        <p class="hbo-note-box__tag">소소한 6월 이야기</p>
+        <p class="hbo-p">
+          호남지역은 전쟁 초기 낙동강 방어선으로의 퇴각 과정에서 시간을 끌며
+          방어하는 지연전이 주를 이뤘기 때문에, 전적지가 평지보다는
+          다리(교량)·고개(산맥)·강쪽에 있는 것이 특징이에요.
+        </p>
+      </aside>
+    </section>
+
+    <!-- 현충시설 3 : 기념관 -->
+    <section class="hbo-section hbo-reveal" aria-labelledby="hbo-cat3">
+      <p class="hbo-cat-eyebrow">현충시설 <span class="hbo-cat-num">3</span></p>
+      <h2 class="hbo-h2" id="hbo-cat3">발길이 머무는 곳, 기념관</h2>
+
+      <article class="hbo-card">
+        <div class="hbo-box__text">
+        <h3 class="hbo-h3">호남호국기념관</h3>
+        <p class="hbo-addr"><span class="hbo-pin" aria-hidden="true">📍</span> 순천시 원연향길 17</p>
+        <p class="hbo-p">
+          6·25전쟁사를 주제로, 호국영웅들의 희생과 공훈을 기리는
+          호남의 유일한 호국기념관.
+        </p>
+      </div>
+        <figure class="hbo-box__figure">
+          <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/호남호국기념관.webp" alt="" width="400" height="300" loading="lazy"></span>
+          <figcaption class="hbo-box__credit">*출처: 보훈문화종합포털 </figcaption>
+        </figure>
+      </article>
+
+      <article class="hbo-card">
+        <div class="hbo-box__text">
+        <h3 class="hbo-h3">나주 학생독립운동기념관</h3>
+        <p class="hbo-addr"><span class="hbo-pin" aria-hidden="true">📍</span> 나주시 죽림길 26</p>
+        <p class="hbo-p">
+          1929년 학생독립운동을 이끌었던 학생들의 투쟁 의지를 기념하는 기념관.
+        </p>
+      </div>
+        <figure class="hbo-box__figure">
+          <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/나주학생독립운동.webp" alt="" width="400" height="300" loading="lazy"></span>
+          <figcaption class="hbo-box__credit">*출처: 나주학생독립운동기념관 </figcaption>
+        </figure>
+      </article>
+
+      <aside class="hbo-tip">
+        <div class="hbo-tip__head">
+          <div class="hbo-tip__headtext">
+            <span class="hbo-tip__eyebrow">소소한 6월 이야기 · 비대면 체험 TIP</span>
+            <p class="hbo-tip__lead">직접 방문하지 않고도 전국의 현충시설을 관람할 수 있는 꿀팁을 알려드릴게요!</p>
+          </div>
+        </div>
+
+        <h3 class="hbo-tip__title">'현충시설 기념관 안내' 앱 다운받기</h3>
+
+        <div class="hbo-tip__stores">
+          <a class="hbo-tip__store" href="https://play.google.com/store/apps/details?id=com.App_IndependenceHall&pcampaignid=web_share" target="_blank" rel="noopener">
+            <span class="hbo-tip__store-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path fill="#00D3FF" d="M3.6 2.3c-.3.2-.5.6-.5 1.2v17c0 .6.2 1 .5 1.2l.1.1L13.2 12 3.7 2.2z"/><path fill="#FFC500" d="M16.4 15.2 13.2 12l3.2-3.2 3.8 2.2c1.1.6 1.1 1.6 0 2.2z"/><path fill="#FF3D44" d="M16.4 15.2 13.2 12 3.7 21.8c.4.4 1 .4 1.7 0z"/><path fill="#00E676" d="M3.7 2.2 13.2 12l3.2-3.2L5.4 2.2c-.7-.4-1.3-.4-1.7 0z"/></svg>
+            </span>
+            <span class="hbo-tip__store-name">구글플레이</span>
+          </a>
+          <a class="hbo-tip__store" href="https://apps.apple.com/kr/app/현충시설-기념관-안내/id464244137" target="_blank" rel="noopener">
+            <span class="hbo-tip__store-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="#1f3d2c"><path d="M17.05 12.5c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.1-2.01-3.77-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.89-1.75.03-3.36 1.02-4.26 2.58-1.82 3.16-.47 7.83 1.3 10.4.87 1.25 1.9 2.66 3.25 2.61 1.3-.05 1.8-.84 3.37-.84 1.57 0 2.02.84 3.4.81 1.4-.02 2.29-1.28 3.15-2.54.99-1.46 1.4-2.87 1.42-2.94-.03-.01-2.72-1.04-2.75-4.13M14.6 4.84c.72-.87 1.2-2.08 1.07-3.28-1.03.04-2.28.69-3.02 1.55-.66.77-1.24 2-1.08 3.18 1.15.09 2.32-.58 3.03-1.45"/></svg>
+            </span>
+            <span class="hbo-tip__store-name">앱스토어</span>
+          </a>
+        </div>
+
+        <p class="hbo-tip__desc">증강현실(AR)·가상현실(VR)을 활용한 사이버 전시관 기능을 제공해 역사적 현장을 간접적으로 체험할 수 있어요.</p>
+
+        <div class="hbo-tip__feats-fit">
+        <div class="hbo-tip__feats">
+          <span class="hbo-tip__feats-label">주요기능</span>
+          <span class="hbo-tip__feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>온라인 가상 관람</span>
+          <span class="hbo-tip__feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>AR 증강현실</span>
+          <span class="hbo-tip__feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h18a1 1 0 0 1 1 1v6a2 2 0 0 1-2 2h-3.5a2 2 0 0 1-1.6-.8l-.8-1.07a1.4 1.4 0 0 0-2.2 0l-.8 1.07A2 2 0 0 1 8.5 17H5a2 2 0 0 1-2-2V9a1 1 0 0 1 1-1Z"/></svg>VR 가상현실</span>
+        </div>
+        </div>
+      </aside>
+
+      <!-- CTA 1 : 앱다운로드 섹션 바로 아래 배치 -->
+      <a class="hbo-cta hbo-reveal" href="https://culture.mpva.go.kr/pvData/fclt" target="_blank" rel="noopener">
+        <span class="hbo-cta__sub">전남광주통합특별시</span>
+        <span class="hbo-cta__main">253곳 현충시설 더 보기</span>
+        <span class="hbo-cta__arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ===================== 핑크 영역 (문화행사 ~ 클로징) ===================== -->
+  <div class="hbo-finale">
+
+    <!-- 문화행사 -->
+    <section class="hbo-section hbo-reveal" aria-labelledby="hbo-culture">
+      <p class="hbo-cat-eyebrow">문화로 되새기다</p>
+      <h2 class="hbo-h2" id="hbo-culture">문화행사로 만나는 호국보훈의 달</h2>
+
+      <h3 class="hbo-block-head">전시</h3>
+
+      <article class="hbo-event">
+        <div class="hbo-box__text">
+        <p class="hbo-event__title">특별기획전 〈끝나지 않은 전쟁〉</p>
+        <p class="hbo-p hbo-p--sm">2026년 한국전쟁 76주년 특별기획전</p>
+        <dl class="hbo-event__meta">
+          <div><dt>기간</dt><dd>2027.06.30.(수)까지</dd></div>
+          <div><dt>장소</dt><dd>호남호국기념관 1층 기획전시실</dd></div>
+        </dl>
+        <a class="hbo-card-link" href="https://honam625.or.kr/special/7" target="_blank" rel="noopener">자세히 보기 <span aria-hidden="true">→</span></a>
+      </div>
+        <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/전시_끝나지않은전쟁.webp" alt="" width="400" height="300" loading="lazy"></span>
+      </article>
+
+      <article class="hbo-event">
+        <div class="hbo-box__text">
+        <p class="hbo-event__title">광주, 그리고 대한독립만세</p>
+        <dl class="hbo-event__meta">
+          <div><dt>기간</dt><dd>2026.06.10.(수) ~ 2026.09.06.(일)</dd></div>
+          <div><dt>장소</dt><dd>오방 최흥종기념관</dd></div>
+        </dl>
+        <a class="hbo-card-link" href="https://dmgj.kr/event.es?mid=a10302000000&seq=9177&act=view&p_cate=0302" target="_blank" rel="noopener">자세히 보기 <span aria-hidden="true">→</span></a>
+      </div>
+        <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/전시_광주그리고.webp" alt="" width="400" height="300" loading="lazy"></span>
+      </article>
+
+      <h3 class="hbo-block-head">체험</h3>
+
+      <article class="hbo-event">
+        <div class="hbo-box__text">
+        <p class="hbo-event__title">2026 백범역사문화체험교실</p>
+        <p class="hbo-p hbo-p--sm">독립운동가 의상과 소품을 활용한 흑백 인물사진 촬영까지!</p>
+        <dl class="hbo-event__meta">
+          <div><dt>기간</dt><dd>2026.10.31.(토)까지 · 화~일 10:00~16:00</dd></div>
+          <div><dt>장소</dt><dd>광주백범기념관</dd></div>
+          <div><dt>신청</dt><dd>광주백범기념관 홈페이지 신청</dd></div>
+        </dl>
+        <a class="hbo-card-link" href="https://dmgj.kr/event.es?mid=a10304000000&seq=9045&act=view&p_cate=0304" target="_blank" rel="noopener">자세히 보기 <span aria-hidden="true">→</span></a>
+      </div>
+        <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/체험_백범문화역사.webp" alt="" width="400" height="300" loading="lazy"></span>
+      </article>
+
+      <article class="hbo-event">
+        <div class="hbo-box__text">
+        <p class="hbo-event__title">백범일지 나눔 프로젝트</p>
+        <p class="hbo-p hbo-p--sm">편지쓰기로 독립운동의 의미와 가치를 이해하고, 김구 선생님의 삶과 정신을 되새겨 보는 시간.</p>
+        <dl class="hbo-event__meta">
+          <div><dt>기간</dt><dd>2026.10.31.(토)까지 · 9:30~18:00</dd></div>
+          <div><dt>장소</dt><dd>광주백범기념관</dd></div>
+        </dl>
+        <a class="hbo-card-link" href="https://dmgj.kr/event.es?mid=a10304000000&seq=8833&act=view&p_cate=0304" target="_blank" rel="noopener">자세히 보기 <span aria-hidden="true">→</span></a>
+      </div>
+        <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/체험_백범일지나눔.webp" alt="" width="400" height="300" loading="lazy"></span>
+      </article>
+
+      <article class="hbo-event">
+        <div class="hbo-box__text">
+        <p class="hbo-event__title">오방의 흔적 돌아보기</p>
+        <p class="hbo-p hbo-p--sm">오방 선생님의 삶의 흔적을 돌아보고 어반드로잉으로 표현하기.</p>
+        <dl class="hbo-event__meta">
+          <div><dt>모집</dt><dd>2026.06.17.(수)까지</dd></div>
+          <div><dt>일정</dt><dd>2026년 6월~7월 매주 목요일 14:00~16:00</dd></div>
+          <div><dt>장소</dt><dd>오방 최흥종기념관</dd></div>
+        </dl>
+        <a class="hbo-card-link" href="https://dmgj.kr/event.es?mid=a10304000000&seq=9178&act=view&p_cate=0304" target="_blank" rel="noopener">자세히 보기 <span aria-hidden="true">→</span></a>
+      </div>
+        <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/체험_오방의.webp" alt="" width="400" height="300" loading="lazy"></span>
+      </article>
+
+      <article class="hbo-event">
+        <div class="hbo-box__text">
+        <p class="hbo-event__title">내가 보는 대한독립만세</p>
+        <p class="hbo-p hbo-p--sm">광주의 독립운동을 정확히 이해하고 샌드아트로 재해석하는 체험 강좌.</p>
+        <dl class="hbo-event__meta">
+          <div><dt>대상</dt><dd>청소년 및 성인</dd></div>
+          <div><dt>기간</dt><dd>2026년 9월까지 · 매주 토 10:00</dd></div>
+          <div><dt>장소</dt><dd>오방 최흥종기념관 일대</dd></div>
+        </dl>
+      </div>
+        <span class="hbo-box__imgwrap"><img class="hbo-box__img" src="img/내가보는 대한독립만세.webp" alt="" width="400" height="300" loading="lazy"></span>
+      </article>
+
+      <a class="hbo-inline-link" href="" target="_blank" rel="noopener" style="margin-top:28px;margin-bottom:10px;">
+        모두크루 하형정님이 취재한 보훈 뮤지컬 갈라쇼 보기
+        <span aria-hidden="true">→</span>
+      </a>
+
+      <!-- CTA 2 : 문화행사 섹션 안에 배치 -->
+      <a class="hbo-cta hbo-cta--alt hbo-reveal" href="https://blog.naver.com/mpvalove/224302757681" target="_blank" rel="noopener">
+        <span class="hbo-cta__sub">국가보훈부</span>
+        <span class="hbo-cta__main">2026 호국보훈의 달 주요 행사 확인하기</span>
+        <span class="hbo-cta__arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+
+  <!-- ===================== 인피니트 캐러셀 ===================== -->
+  <section class="hbo-roll" aria-label="현장 이미지 갤러리">
+    <div class="hbo-roll__viewport hbo-reveal">
+      <ul class="hbo-roll__track">
+        <!-- ▼ 실제 사진 6장: src 경로만 교체하세요 (예: img/롤링1.webp) -->
+        <li class="hbo-roll__item"><img class="hbo-roll__img" src="img/6.webp" alt="" width="600" height="400" loading="lazy"></li>
+        <li class="hbo-roll__item"><img class="hbo-roll__img" src="img/5.webp" alt="" width="600" height="400" loading="lazy"></li>
+        <li class="hbo-roll__item"><img class="hbo-roll__img" src="img/4.webp" alt="" width="600" height="400" loading="lazy"></li>
+        <li class="hbo-roll__item"><img class="hbo-roll__img" src="img/1.webp" alt="" width="600" height="400" loading="lazy"></li>
+        <li class="hbo-roll__item"><img class="hbo-roll__img" src="img/2.webp" alt="" width="600" height="400" loading="lazy"></li>
+        <li class="hbo-roll__item"><img class="hbo-roll__img" src="img/3.webp" alt="" width="600" height="400" loading="lazy"></li>
+        <!-- ▼ 무한 루프용 복제본 (수정 불필요) -->
+        <li class="hbo-roll__item" aria-hidden="true"><img class="hbo-roll__img" src="img/6.webp" alt="" width="600" height="400" loading="lazy"></li>
+        <li class="hbo-roll__item" aria-hidden="true"><img class="hbo-roll__img" src="img/5.webp" alt="" width="600" height="400" loading="lazy"></li>
+        <li class="hbo-roll__item" aria-hidden="true"><img class="hbo-roll__img" src="img/4.webp" alt="" width="600" height="400" loading="lazy"></li>
+        <li class="hbo-roll__item" aria-hidden="true"><img class="hbo-roll__img" src="img/1.webp" alt="" width="600" height="400" loading="lazy"></li>
+        <li class="hbo-roll__item" aria-hidden="true"><img class="hbo-roll__img" src="img/2.webp" alt="" width="600" height="400" loading="lazy"></li>
+        <li class="hbo-roll__item" aria-hidden="true"><img class="hbo-roll__img" src="img/3.webp" alt="" width="600" height="400" loading="lazy"></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== 클로징 ===================== -->
+  <footer class="hbo-closing hbo-reveal" role="contentinfo">
+    <p class="hbo-closing__lead">우리가 누리는 평범한 하루는<br>누군가의 소중한 헌신 덕분입니다.<!-- 태극기: 경로로 직접 삽입 위치 (예: <img class="hbo-closing__icon" src="...">)
+    --><img class="hbo-closing__icon" src="img/태극기.svg"></p>
+    <p class="hbo-closing__sub">
+      6월 호국보훈의 달, 거창하지 않더라도 그 마음을 잊지 않고
+      함께 기억하는 우리가 되길 바랍니다.
+    </p>
+    <ul class="hbo-tags" aria-label="관련 태그">
+      <li class="hbo-tag">#호국보훈</li>
+      <li class="hbo-tag">#호국보훈전적지</li>
+      <li class="hbo-tag">#전남광주현충시설</li>
+      <li class="hbo-tag">#현충시설</li>
+      <li class="hbo-tag">#광주호국보훈</li>
+      <li class="hbo-tag">#6·25전쟁</li>
+      <li class="hbo-tag">#호남호국기념관</li>
+      <li class="hbo-tag">#나주학생독립운동기념관</li>
+      <li class="hbo-tag">#호국보훈체험</li>
+      <li class="hbo-tag">#호국보훈문화행사</li>
+    </ul>
+  </footer>
+
+  </div><!-- /.hbo-finale -->
+
+</div><!-- /.hbo-root -->
+
+<style>
+/* ===== 폰트 ===== */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+@font-face {
+  font-family: 'SfHambakneun';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
+  font-weight: normal;
+  font-display: swap;
+}
+
+/* ===== 스코프 리셋 (전역 오염 금지) ===== */
+.contents_div .hbo-root,
+.contents_div .hbo-root * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.contents_div .hbo-root {
+  --ink: #4057a2;          /* 메인 컬러 · 인트로 블루 */
+  --ink-2: #5167a8;
+  --paper:  #fcf9e7;        /* 따뜻한 종이 */
+  --paper-card: #ffffff;
+  --gold: #ff68ac;         /* 메인 포인트 · 인트로 핑크 */
+  --gold-soft: #f2b0cb;
+  --pine: #3bb76d;         /* 인트로 그린 */
+  --crimson: #ff6bc1;      /* 딥 핑크 */
+  --text: #24303f;
+  --text-soft: #5a6472;
+
+  /* ▼ stat 박스 위 PNG 이미지가 아래로 겹치는 정도 (이 숫자만 바꾸면 됩니다) */
+  --hbo-img-overlap: 40px;
+
+  background: var(--paper);
+  color: var(--text);
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+  font-size: 17px;
+  line-height: 1.78;
+  letter-spacing: -0.01em;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 공통 타이포 ===== */
+.contents_div .hbo-h2 {
+  font-family: 'SfHambakneun', serif;
+  font-size: 27px;
+  font-weight: normal;
+  line-height: 1.4;
+  color: var(--ink);
+  word-break: keep-all;
+  margin-bottom: 18px;
+  position: relative;
+  padding-left: 18px;
+}
+.contents_div .hbo-h2::before {
+  content: "";
+  position: absolute; left: 0; top: 6px; bottom: 6px;
+  width: 5px; border-radius: 5px;
+  background: var(--ink);
+}
+.contents_div .hbo-h2--light { color: #fff; }
+.contents_div .hbo-h2--light::before { background: #fff; }
+
+.contents_div .hbo-h3 {
+  font-family: 'SfHambakneun', serif;
+  font-size: 21px;
+  font-weight: normal;
+  color: var(--ink);
+  word-break: keep-all;
+  margin-bottom: 6px;
+}
+.contents_div .hbo-p {
+  font-size: 17px;
+  color: var(--text);
+  word-break: keep-all;
+}
+.contents_div .hbo-p + .hbo-p { margin-top: 14px; }
+.contents_div .hbo-p--sm { font-size: 16px; color: var(--text-soft); margin-top: 4px; }
+.contents_div .hbo-p--muted { font-size: 16px; color: var(--text-soft); margin-top: 26px; }
+.contents_div .hbo-p strong { color: var(--crimson); font-weight: 700; }
+
+/* ===== HERO ===== */
+.contents_div .hbo-hero {
+  position: relative;
+  overflow: hidden;
+}
+.contents_div .hbo-hero__img {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto;
+}
+.contents_div .hbo-hero__body {
+  background:
+    radial-gradient(120% 90% at 50% 0%, #5066a8 0%, var(--ink) 60%, #2b3a70 100%);
+  padding: 30px 50px 38px;
+  text-align: center;
+}
+.contents_div .hbo-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+.contents_div .hbo-hero__glow {
+  position: absolute; top: -40px; left: 50%; transform: translateX(-50%);
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(231,207,154,.35), transparent 65%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+.contents_div .hbo-mugunghwa {
+  width: 92px; height: 92px;
+  position: relative; z-index: 1;
+  margin-bottom: 22px;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.3));
+}
+.contents_div .hbo-mugunghwa__bloom { transform-origin: 60px 60px; animation: hbo-breathe 5.5s ease-in-out infinite; }
+@keyframes hbo-breathe { 0%,100%{ transform: scale(1); } 50%{ transform: scale(1.06); } }
+
+.contents_div .hbo-eyebrow {
+  display: inline-block;
+  font-size: 14px; font-weight: 700; letter-spacing: .18em;
+  color: var(--gold-soft);
+  border: 1px solid rgba(231,207,154,.45);
+  border-radius: 999px;
+  padding: 6px 18px;
+  margin-bottom: 20px;
+}
+.contents_div .hbo-hero__title {
+  font-family: 'SfHambakneun', serif;
+  font-size: 34px; font-weight: normal; line-height: 1.42;
+  color: #fff; word-break: keep-all;
+}
+.contents_div .hbo-hero__title span { color: var(--gold-soft); }
+
+.contents_div .hbo-summary {
+  list-style: none;
+  margin: 0 auto;
+  max-width: 560px;
+  text-align: left;
+}
+.contents_div .hbo-summary li {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 16px; color: #dfe6f2;
+  word-break: keep-all;
+  padding: 13px 18px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+}
+.contents_div .hbo-summary li + li { margin-top: 10px; }
+.contents_div .hbo-summary__num {
+  flex: none;
+  font-family: 'SfHambakneun', serif;
+  font-weight: normal; font-size: 17px;
+  color: var(--ink);
+  background: var(--gold-soft);
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center;
+}
+
+/* ===== MAIN ===== */
+.contents_div .hbo-main { padding: 0 50px; }
+.contents_div .hbo-section { padding: 60px 0; border-bottom: 1px solid #e7ddc9; }
+.contents_div .hbo-section:last-of-type { border-bottom: none; }
+/* 두 섹션에만 상단 여백 추가 */
+.contents_div .hbo-section[aria-labelledby="hbo-why"] { margin-top: 10px; }
+/* 핑크 섹션 위 짧은 경계선(이전 섹션 border-bottom) 제거 → 핑크 풀블리드 선만 남김 */
+.contents_div .hbo-section[aria-labelledby="hbo-cat3"] { border-bottom: none; }
+/* 핑크 영역: 문화행사~클로징 전체를 핑크(#fdecf3)로 깔아 그 뒤 노란 paper 노출 방지 */
+.contents_div .hbo-finale { background: #fdecf3; }
+/* 문화행사 섹션: 핑크 영역 내부, 메인 폭과 동일하게 풀폭 */
+.contents_div .hbo-section[aria-labelledby="hbo-culture"] {
+  background: #fdecf3;
+  border-top: 1px solid #f6d3e3;
+  border-bottom: none;
+  margin: 0;
+  padding: 66px 50px 60px;
+}
+
+.contents_div .hbo-cat-eyebrow {
+  font-size: 15.5px; font-weight: 800; letter-spacing: .12em;
+  color: var(--pine); margin-bottom: 8px;
+}
+/* 현충시설 번호: 어두운 원형 배지 + 흰색 숫자 */
+.contents_div .hbo-cat-num {
+  display: inline-grid; place-items: center;
+  width: 1.35em; height: 1.35em; border-radius: 50%;
+  background: var(--pine); color: #fff;
+  font-size: 0.74em; font-weight: 800; line-height: 1;
+  letter-spacing: 0;
+  margin-left: 6px; vertical-align: middle;
+}
+
+/* 인라인 링크 */
+.contents_div .hbo-inline-link {
+  position: relative;
+  display: flex; align-items: center;
+  width: auto; margin: 28px 0 0;
+  padding: 20px 78px 20px 30px;
+  font-size: 16px; font-weight: 700;
+  color: #fff; text-decoration: none;
+  background: linear-gradient(110deg, var(--pine), #2c9d5a);
+  border-radius: 16px;
+  word-break: keep-all; line-height: 1.5;
+  box-shadow: 0 8px 20px rgba(59,183,109,.18);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.contents_div .hbo-inline-link:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(59,183,109,.28); }
+.contents_div .hbo-inline-link span {
+  position: absolute; right: 26px; top: 50%; transform: translateY(-50%);
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255,255,255,.22); color: #fff;
+  display: grid; place-items: center; font-size: 20px; font-weight: 800;
+  transition: transform .25s ease;
+}
+.contents_div .hbo-inline-link:hover span { transform: translateY(-50%) translateX(3px); }
+
+/* 연혁 타임라인 */
+.contents_div .hbo-timeline {
+  display: flex; align-items: stretch; gap: 0;
+  margin: 24px 0;
+  background: var(--paper-card);
+  border: 1px solid #ece2cf;
+  border-radius: 16px;
+  padding: 20px 22px;
+}
+.contents_div .hbo-timeline__item { flex: 1; text-align: center; }
+.contents_div .hbo-timeline__year {
+  display: block;
+  font-family: 'SfHambakneun', serif; font-weight: normal; font-size: 26px;
+  color: var(--gold);
+}
+.contents_div .hbo-timeline__label { display: block; font-size: 15px; color: var(--text-soft); word-break: keep-all; margin-top: 2px; }
+.contents_div .hbo-timeline__line {
+  flex: none; width: 32px;
+  background: repeating-linear-gradient(90deg, #d9cba8 0 7px, transparent 7px 13px);
+  align-self: flex-start; margin-top: 18px; height: 2px;
+}
+
+/* ===== STAT 상단 PNG 이미지 ===== */
+.contents_div .hbo-intro-img {
+  position: relative;
+  z-index: 2;                 /* 이미지가 아래 박스보다 위에 오도록 */
+  margin: 70px 0 calc(-0.2 * var(--hbo-img-overlap));  /* 아래 음수 마진 = 겹침 */
+  text-align: center;
+  pointer-events: none;       /* 장식 이미지라 클릭 막힘 방지 */
+}
+.contents_div .hbo-intro-img__png {
+  display: block;
+  width: 68%;
+  max-width: 68%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* ===== STAT ===== */
+.contents_div .hbo-stat {
+  position: relative;
+  z-index: 1;                 /* 이미지 아래로 깔림 */
+  margin: 46px 0 0;
+  background: radial-gradient(120% 100% at 50% 0%, var(--ink-2), var(--ink) 70%);
+  border-radius: 24px;
+  padding: 44px 40px;
+  text-align: center;
+}
+/* 이미지 섹션 바로 뒤에 올 때는 위 마진 제거 (겹침이 정확히 적용되도록) */
+.contents_div .hbo-intro-img + .hbo-stat { margin-top: 0; }
+.contents_div .hbo-stat .hbo-h2 { display: inline-block; text-align: left; }
+.contents_div .hbo-stat__lead { color: var(--gold-soft); font-size: 16px; margin: 8px 0 6px; }
+.contents_div .hbo-stat__big {
+  display: flex; align-items: baseline; justify-content: center; gap: 6px;
+  margin: 4px 0 18px;
+}
+.contents_div .hbo-count {
+  font-family: 'SfHambakneun', serif; font-weight: normal;
+  font-size: 92px; line-height: 1;
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(231,207,154,.35);
+}
+.contents_div .hbo-stat__unit { font-size: 30px; font-weight: 700; color: var(--gold-soft); }
+
+.contents_div .hbo-stat__split {
+  display: inline-flex; align-items: center; gap: 16px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 16px;
+  padding: 16px 26px;
+}
+.contents_div .hbo-stat__cell { display: flex; flex-direction: column; align-items: center; }
+.contents_div .hbo-stat__value { display: flex; align-items: baseline; gap: 4px; }
+.contents_div .hbo-stat__region { font-size: 14px; color: #c4cee0; margin-bottom: 2px; }
+.contents_div .hbo-stat__count { font-family: 'SfHambakneun', serif; font-weight: normal; font-size: 34px; color: #fff; }
+.contents_div .hbo-stat__small { font-size: 15px; color: var(--gold-soft); }
+.contents_div .hbo-stat__plus { font-size: 26px; font-weight: 700; color: var(--gold-soft); }
+.contents_div .hbo-stat__note { margin-top: 22px; font-size: 16px; color: #d7deec; word-break: keep-all; }
+
+/* ===== CARD ===== */
+.contents_div .hbo-card {
+  background: var(--paper-card);
+  border: 1px solid #ece2cf;
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-top: 18px;
+  box-shadow: 0 6px 18px rgba(20,35,64,.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 35px;
+}
+/* 기념비 섹션만: 사진 좌측 · 텍스트 우측 */
+.contents_div .hbo-section[aria-labelledby="hbo-cat2"] .hbo-card { flex-direction: row-reverse; }
+/* 텍스트 좌 · 이미지 우 (흰색 박스 공통) */
+.contents_div .hbo-box__text { flex: 1; min-width: 0; }
+.contents_div .hbo-box__imgwrap {
+  flex: none;
+  width: 260px;
+  height: auto;
+  /* height: 195px; */
+  aspect-ratio: 3 / 2;
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  border: 1px solid rgb(203, 203, 201);
+}
+.contents_div .hbo-box__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .45s ease;
+}
+.contents_div .hbo-card:hover .hbo-box__img,
+.contents_div .hbo-event:hover .hbo-box__img { transform: scale(1.08); }
+.contents_div .hbo-box__figure { flex: none; width: 260px; margin: 0; }
+.contents_div .hbo-box__credit { font-size: 11px; color: var(--text-soft); text-align: right; margin-top: 6px; margin-right: 3px; line-height: 1.4; word-break: keep-all; }
+.contents_div .hbo-section[aria-labelledby="hbo-cat2"] .hbo-box__credit { text-align: left; margin-left: 3px; margin-right: 0; }
+.contents_div .hbo-addr {
+  font-size: 15px; color: var(--text-soft);
+  margin-bottom: 12px; word-break: keep-all;
+}
+.contents_div .hbo-pin { margin-right: 2px; }
+.contents_div .hbo-card-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 14px;
+  font-size: 15px; font-weight: 700;
+  color: var(--gold); text-decoration: none;
+}
+.contents_div .hbo-card-link span { transition: transform .2s ease; }
+.contents_div .hbo-card-link:hover span { transform: translateX(4px); }
+
+/* ===== NOTE BOX ===== */
+.contents_div .hbo-note-box {
+  margin-top: 28px;
+  background: #eef5f1;
+  border: 1px solid var(--pine);
+  border-radius: 14px;
+  padding: 20px 22px;
+}
+.contents_div .hbo-note-box--tip { background: #eef5f1; border-color: var(--pine); }
+.contents_div .hbo-note-box__tag {
+  display: inline-block;
+  font-size: 16px; font-weight: 800; letter-spacing: .04em;
+  color: var(--pine);
+  margin-bottom: 8px;
+}
+.contents_div .hbo-note-box--tip .hbo-note-box__tag { color: var(--pine); }
+
+/* ===== 비대면 체험 TIP 카드 ===== */
+.contents_div .hbo-tip {
+  position: relative; overflow: hidden;
+  margin-top: 28px;
+  padding: 26px 26px 28px;
+  border-radius: 20px;
+  background: linear-gradient(158deg, #f1faf4 0%, #e6f4ec 100%);
+  border: 1px solid #c8e8d5;
+}
+.contents_div .hbo-tip__head { display: flex; align-items: center; gap: 14px; position: relative; }
+.contents_div .hbo-tip__eyebrow { display: block; font-size: 16px; font-weight: 800; letter-spacing: .04em; color: var(--pine); word-break: keep-all; line-height: 1.45; }
+.contents_div .hbo-tip__title {
+  font-family: 'SfHambakneun', serif;
+  font-size: 20px; font-weight: normal; color: #234b35;
+  margin: 18px 0 0; line-height: 1.42; word-break: keep-all;
+}
+.contents_div .hbo-tip__lead { margin-top: 4px; font-size: 16px; color: #355c44; line-height: 1.7; word-break: keep-all; }
+.contents_div .hbo-tip__stores { display: flex; gap: 12px; margin-top: 18px; }
+.contents_div .hbo-tip__store {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 16px; border-radius: 14px;
+  background: #fff; border: 1px solid #d6ecdf;
+  text-decoration: none; color: #1f3d2c;
+  font-size: 15px; font-weight: 800; word-break: keep-all;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.contents_div .hbo-tip__store:hover { border-color: var(--pine); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(20,60,40,.08); }
+.contents_div .hbo-tip__store-ico { flex: none; width: 22px; height: 22px; display: grid; place-items: center; }
+.contents_div .hbo-tip__store-ico svg { width: 22px; height: 22px; }
+.contents_div .hbo-tip__desc { margin-top: 18px; font-size: 15px; color: #355c44; line-height: 1.7; word-break: keep-all; }
+.contents_div .hbo-tip__desc strong { color: var(--pine); font-weight: 800; }
+.contents_div .hbo-tip__feats-fit { width: 100%; overflow: hidden; margin-top: 16px; }
+.contents_div .hbo-tip__feats {
+  display: flex; flex-wrap: nowrap; align-items: center; gap: 10px;
+  width: max-content;
+  transform-origin: left top; will-change: transform;
+}
+.contents_div .hbo-tip__feats-label {
+  flex: none; display: inline-flex; align-items: center;
+  padding: 8px 14px; border-radius: 999px;
+  background: var(--pine); border: 1px solid var(--pine);
+  font-size: 14px; font-weight: 800; color: #fff; letter-spacing: .02em;
+  word-break: keep-all;
+}
+.contents_div .hbo-tip__feat {
+  flex: none;
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 14px; border-radius: 999px;
+  background: rgba(59,183,109,.10); border: 1px solid #bfe6cd;
+  font-size: 14px; font-weight: 700; color: #2c6f48;
+}
+.contents_div .hbo-tip__feat svg { width: 17px; height: 17px; flex: none; }
+
+/* ===== CTA ===== */
+.contents_div .hbo-cta {
+  display: flex; flex-direction: column; align-items: flex-start;
+  position: relative;
+  margin: 28px 0 0;
+  padding: 26px 30px;
+  background: linear-gradient(110deg, #4367b5, #2852a0);
+  border: 1px solid #add4ff;
+  border-radius: 18px;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 8px 8px rgba(63, 94, 162, 0.18);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.contents_div .hbo-cta--alt { background: linear-gradient(110deg, #4367b5, #2852a0); margin-top: 28px; margin-bottom: 0;}
+.contents_div .hbo-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 15px rgba(17, 75, 192, 0.28); }
+.contents_div .hbo-cta__sub { font-size: 14px; color: var(--gold-soft); font-weight: 700; letter-spacing: .04em; }
+.contents_div .hbo-cta__main {
+  font-family: 'SfHambakneun', serif;
+  font-size: 22px; font-weight: normal; color: #fff;
+  margin-top: 4px; word-break: keep-all; padding-right: 36px;
+}
+.contents_div .hbo-cta__arrow {
+  position: absolute; right: 26px; top: 50%; transform: translateY(-50%);
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--gold-soft); color: var(--ink);
+  display: grid; place-items: center;
+  font-size: 20px; font-weight: 800;
+  transition: transform .25s ease;
+}
+.contents_div .hbo-cta:hover .hbo-cta__arrow { transform: translateY(-50%) translateX(3px); }
+
+/* .hbo-reveal(.hbo-on)의 transform:none / 느린 transition이 호버 효과를 덮어쓰는 문제 해결 */
+.contents_div .hbo-cta.hbo-reveal { transition: opacity .5s ease, transform .25s ease, box-shadow .25s ease; }
+.contents_div .hbo-cta.hbo-reveal:hover { transform: translateY(-3px); }
+
+/* ===== EVENTS ===== */
+.contents_div .hbo-block-head {
+  font-family: 'SfHambakneun', serif;
+  font-size: 19px; font-weight: normal; color: #fff;
+  background: var(--ink);
+  display: inline-block;
+  padding: 6px 18px; border-radius: 999px;
+  margin: 26px 0 6px;
+}
+.contents_div .hbo-event {
+  background: var(--paper-card);
+  border: 1px solid #ece2cf;
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.contents_div .hbo-event__title {
+  font-family: 'SfHambakneun', serif;
+  font-size: 19px; font-weight: normal; color: var(--ink);
+  word-break: keep-all;
+}
+.contents_div .hbo-event__meta { margin-top: 12px; display: grid; gap: 7px; }
+.contents_div .hbo-event__meta > div { display: flex; gap: 10px; align-items: baseline; }
+.contents_div .hbo-event__meta dt {
+  flex: none; width: 44px;
+  font-size: 13px; font-weight: 800; color: #fff;
+  background: var(--pine); border-radius: 6px;
+  text-align: center; padding: 3px 0;
+}
+.contents_div .hbo-event__meta dd { font-size: 15px; color: var(--text); word-break: keep-all; }
+
+/* ===== CLOSING ===== */
+.contents_div .hbo-closing {
+  background: linear-gradient(160deg, #fde6f1 0%,  #f7c0da 90% );
+  border-top: 1px solid #ffbde9;
+  padding: 75px 50px 60px;
+  text-align: center;
+}
+.contents_div .hbo-closing__icon {
+  display: inline-block;
+  width: 24px; height: auto;
+  margin: 0 0 0 8px;
+  vertical-align: -0.12em;
+  transform-origin: 50% 50%;
+  animation: hbo-flag-sway 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes hbo-flag-sway {
+  0%   { transform: rotate(-1deg) skewX(0deg); }
+  25%  { transform: rotate(0.5deg)  skewX(1.6deg); }
+  50%  { transform: rotate(1deg)  skewX(0deg); }
+  75%  { transform: rotate(0.4deg)  skewX(-1.6deg); }
+  100% { transform: rotate(-1deg) skewX(0deg); }
+}
+.contents_div .hbo-mugunghwa--sm { width: 56px; height: 56px; margin-bottom: 18px; filter: drop-shadow(0 4px 10px rgba(0,0,0,.3)); }
+.contents_div .hbo-closing__lead {
+  font-family: 'SfHambakneun', serif;
+  font-size: 27px; font-weight: normal; line-height: 1.5;
+  color: #552036; word-break: keep-all; margin-top: 0; margin-bottom: 10px;
+}
+.contents_div .hbo-closing__sub {
+  margin-top: 20px; font-size: 16px; color: #492e3b;
+  word-break: keep-all; max-width: 350px; margin-left: auto; margin-right: auto;
+}
+.contents_div .hbo-tags {
+  list-style: none; padding: 0;
+  margin: 60px auto 0; 
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center;
+}
+.contents_div .hbo-tag {
+  font-size: 13px; font-weight: 700; color: #42303c;
+  background: rgba(255, 255, 255, 0.186);
+  border: 1px solid rgba(255, 255, 255, 0.316);
+  border-radius: 999px;
+  padding: 7px 14px;
+  word-break: keep-all;
+}
+
+/* ===== 인피니트 캐러셀 ===== */
+.contents_div .hbo-roll {
+  --hbo-roll-w: 300px;     /* 슬라이드 너비 (데스크톱) */
+  --hbo-roll-gap: 13px;    /* 슬라이드 간격 */
+  --hbo-roll-speed: 50s;   /* 한 바퀴 도는 시간 (작을수록 빠름) */
+  margin: 0;
+  padding: 30px 0;         /* 위아래 여백(이 영역도 핑크로 채워짐) */
+  background: #fdecf3;     /* 캐러셀 배경 (단일 핑크) */
+  overflow: hidden;
+}
+.contents_div .hbo-roll__viewport {
+  overflow: hidden;
+  /* 양옆 페이드 처리 */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+.contents_div .hbo-roll__track {
+  list-style: none;
+  display: flex;
+  width: max-content;
+  animation: hbo-roll-marquee var(--hbo-roll-speed) linear infinite;
+}
+.contents_div .hbo-roll__item {
+  flex: none;
+  width: var(--hbo-roll-w);
+  margin-right: var(--hbo-roll-gap);
+}
+.contents_div .hbo-roll__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid #ffdee8;
+  display: block;
+}
+@keyframes hbo-roll-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ===== REVEAL 애니메이션 ===== */
+.contents_div .hbo-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.contents_div .hbo-reveal.hbo-on { opacity: 1; transform: none; }
+
+/* ===== 모바일 ===== */
+@media (max-width: 600px) {
+  .contents_div .hbo-root { font-size: 14px; line-height: 1.72; }
+  .contents_div .hbo-card, .contents_div .hbo-event { flex-direction: column; align-items: stretch; gap: 16px; }
+  .contents_div .hbo-section[aria-labelledby="hbo-cat2"] .hbo-card { flex-direction: column; }
+  .contents_div .hbo-section[aria-labelledby="hbo-cat2"] .hbo-box__credit { text-align: right; margin-left: 0; margin-right: 3px; }
+  .contents_div .hbo-box__imgwrap { width: 100%; height: auto; }
+  .contents_div .hbo-box__figure { width: 100%; }
+  .contents_div .hbo-hero__body { padding: 24px 20px 30px; }
+  .contents_div .hbo-summary li { font-size: clamp(10px, 3.12vw, 14px); padding: 11px 10px; gap: 7px; white-space: nowrap; }
+  .contents_div .hbo-summary__num { width: 26px; height: 26px; font-size: 14px; }
+
+  .contents_div .hbo-main { padding: 0 20px; }
+  .contents_div .hbo-section { padding: 36px 0; }
+  .contents_div .hbo-section[aria-labelledby="hbo-why"] { margin-top: 10px; }
+  .contents_div .hbo-section[aria-labelledby="hbo-culture"] { margin: 0; padding: 44px 20px 38px; }
+  .contents_div .hbo-h2 { font-size: 22px; word-break: keep-all; }
+  .contents_div .hbo-h3 { font-size: 17px; word-break: keep-all; }
+  .contents_div .hbo-p, .contents_div .hbo-p--sm, .contents_div .hbo-p--muted { font-size: 14px; }
+  .contents_div .hbo-stat__note { font-size: 14px; }
+
+  .contents_div .hbo-timeline { gap: 6px; padding: 16px 10px; }
+  .contents_div .hbo-timeline__year { font-size: 19px; }
+  .contents_div .hbo-timeline__label { font-size: 11px; line-height: 1.35; margin-top: 4px; }
+  .contents_div .hbo-timeline__line { width: 14px; height: 2px; margin-top: 13px; align-self: flex-start; background: repeating-linear-gradient(90deg, #d9cba8 0 5px, transparent 5px 10px); }
+  .contents_div .hbo-inline-link { font-size: 14px; white-space: normal; padding: 16px 62px 16px 18px; }
+  .contents_div .hbo-inline-link span { right: 18px; width: 36px; height: 36px; font-size: 18px; }
+
+  .contents_div .hbo-intro-img { margin: 45px 0 calc(-0.2 * var(--hbo-img-overlap));  /* 아래 음수 마진 = 겹침 */}
+
+  .contents_div .hbo-stat { padding: 34px 22px; border-radius: 18px; }
+  .contents_div .hbo-stat .hbo-h2 { display: block; font-size: clamp(17px, 5vw, 22px); padding-right: 14px; }
+  .contents_div .hbo-count { font-size: 68px; }
+  .contents_div .hbo-stat__unit { font-size: 24px; }
+  .contents_div .hbo-stat__split { gap: 12px; padding: 14px 16px; }
+  .contents_div .hbo-stat__count { font-size: 28px; }
+
+  .contents_div .hbo-card, .contents_div .hbo-event, .contents_div .hbo-note-box { padding: 18px 18px; }
+  .contents_div .hbo-tip { padding: 20px 18px 22px; }
+  .contents_div .hbo-tip__title { font-size: clamp(13px, 4.3vw, 18px); white-space: nowrap; }
+  .contents_div .hbo-tip__lead, .contents_div .hbo-tip__desc { font-size: 14px; }
+  .contents_div .hbo-tip__desc { font-size: 13px; }
+  .contents_div .hbo-tip__stores { flex-direction: row; gap: 8px; }
+  .contents_div .hbo-tip__store { padding: 12px 8px; font-size: 13.5px; gap: 7px; }
+  .contents_div .hbo-tip__store-ico, .contents_div .hbo-tip__store-ico svg { width: 19px; height: 19px; }
+  .contents_div .hbo-event__title { font-size: 17px; }
+  .contents_div .hbo-event__meta dt { font-size: 12px; }
+  .contents_div .hbo-event__meta dd { font-size: 14px; }
+  .contents_div .hbo-cta { padding: 22px 20px; }
+  .contents_div .hbo-cta--alt { margin-top: 20px; margin-bottom: 0; }
+  .contents_div .hbo-cta__main { font-size: 18px; padding-right: 48px; }
+  .contents_div .hbo-cta__arrow { right: 18px; width: 36px; height: 36px; font-size: 18px; }
+  .contents_div .hbo-closing { padding: 44px 22px 48px; }
+  .contents_div .hbo-closing__lead { font-size: 20px; }
+  .contents_div .hbo-tag { font-size: 11px; }
+
+  /* 캐러셀: 중앙 이미지 약 66% + 양옆 살짝 보이기 */
+  .contents_div .hbo-roll {
+    --hbo-roll-w: 66vw;
+    --hbo-roll-gap: 12px;
+    --hbo-roll-speed: 46s;
+    margin: 0;
+  }
+  .contents_div .hbo-roll__img { border-radius: 12px; }
+}
+
+/* ===== 모션 최소화 선호 존중 ===== */
+@media (prefers-reduced-motion: reduce) {
+  .contents_div .hbo-reveal { opacity: 1; transform: none; transition: none; }
+  .contents_div .hbo-mugunghwa__bloom { animation: none; }
+  .contents_div .hbo-closing__icon { animation: none; }
+  .contents_div .hbo-roll__track { animation: none; }
+}
+</style>
+
+<script>
+(function () {
+  var root = document.querySelector('.contents_div .hbo-root');
+  if (!root) return;
+
+  /* 스크롤 등장 애니메이션 (스코프 내부 요소만) */
+  var items = root.querySelectorAll('.hbo-reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('hbo-on'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('hbo-on'); });
+  }
+
+  /* 숫자 카운트업 (253 / 29 / 244) */
+  function countUp(el) {
+    var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+    var dur = 1100, start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased).toLocaleString();
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var counters = root.querySelectorAll('[data-target]');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    counters.forEach(function (el) { el.textContent = (parseInt(el.getAttribute('data-target'), 10) || 0).toLocaleString(); });
+  } else if ('IntersectionObserver' in window) {
+    var io2 = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { countUp(e.target); io2.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { io2.observe(el); });
+  } else {
+    counters.forEach(countUp);
+  }
+
+  // 주요기능 캡슐: 웹(데스크톱) 비율을 100%로 두고 가로폭에 맞춰 비례 축소
+  var feats = document.querySelector('.hbo-tip__feats');
+  var featsFit = document.querySelector('.hbo-tip__feats-fit');
+  function fitFeats() {
+    if (!feats || !featsFit) return;
+    feats.style.transform = 'none';
+    var avail = featsFit.clientWidth;
+    var natural = feats.offsetWidth;
+    if (!natural) return;
+    var s = Math.min(1, avail / natural);
+    feats.style.transform = 'scale(' + s + ')';
+    featsFit.style.height = (feats.offsetHeight * s) + 'px';
+  }
+  fitFeats();
+  window.addEventListener('resize', fitFeats);
+  window.addEventListener('load', fitFeats);
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fitFeats); }
+})();
+</script>
+
+</div><!-- /.contents_div -->
