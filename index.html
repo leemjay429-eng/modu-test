@@ -1,3 +1,26 @@
+<!-- 캐시 차단 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+<!-- 뷰포트 -->
+<script>
+  (function () {
+    try {
+      if (!document.querySelector('meta[name="viewport"]')) {
+        var m = document.createElement('meta');
+        m.setAttribute('name', 'viewport');
+        m.setAttribute('content', 'width=device-width, initial-scale=1');
+        (document.head || document.getElementsByTagName('head')[0] || document.documentElement).appendChild(m);
+      }
+    } catch (e) { }
+  })();
+</script>
+
+
+
+
 <!-- ===== 전남광주통합특별시 아카이브 상세페이지 / 모두의 광주 ===== -->
 <!-- 임베드: 아래 .contents_div 블록 전체를 그대로 복사해 CMS 본문에 삽입 -->
 <div class="contents_div">
