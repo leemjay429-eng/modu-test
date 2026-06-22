@@ -157,7 +157,7 @@
         <div class="mgjeat7-popup-body">
           <div class="mgjeat7-introhead">
             <span class="mgjeat7-kickwrap"><span class="mgjeat7-sec-kicker">지역의 개성과 전통을 담은</span></span>
-            <h2 class="mgjeat7-intro-title">이 맛, 다른 데선 못 먹습니다</h2>
+            <h2 class="mgjeat7-intro-title">이 맛, 다른 데선 못 먹습니다.</h2>
           </div>
           <p class="mgjeat7-lead">
             호박인절미, 떡갈비, 대통밥, 보성녹차에 게장백반, 꼬막정식, 영광굴비 등등
@@ -773,7 +773,7 @@
     <section class="mgjeat7-sec" id="mgjeat7-sec-drink" aria-labelledby="mgjeat7-h-drink">
       <div class="mgjeat7-sec-head">
         <span class="mgjeat7-kickwrap"><span class="mgjeat7-sec-kicker">카페 메뉴도 특별하게!</span></span>
-        <h2 class="mgjeat7-sec-title" id="mgjeat7-h-drink">이색 음료</h2>
+        <h2 class="mgjeat7-sec-title" id="mgjeat7-h-drink">호기심 자극 이색 음료</h2>
       </div>
       
       <div class="mgjeat7-grid">
@@ -926,6 +926,17 @@
 @media (prefers-reduced-motion: reduce){
   .contents_div .mgjeat7-hero-bubble{ transition:none; transform:none; opacity:1; animation:none !important; }
   .contents_div .mgjeat7-hero-bubbles{ transform:none !important; }
+}
+
+/* ===== 스크롤 등장(reveal) : 섹션 헤드/카드가 화면에 들어오면 살짝 떠오름 ===== */
+.contents_div .mgjeat7-reveal{
+  opacity:0; transform:translateY(26px);
+  transition:opacity .6s ease, transform .7s cubic-bezier(.22,1,.36,1);
+  will-change:opacity, transform;
+}
+.contents_div .mgjeat7-reveal.is-revealed{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  .contents_div .mgjeat7-reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
 }
 
 /* ===== 리드 (팝업창) ===== */
@@ -1210,7 +1221,7 @@
   .contents_div .mgjeat7-titlerow .mgjeat7-name{ margin-bottom:0; }
   .contents_div .mgjeat7-sec-title,
   .contents_div .mgjeat7-cta-line{ word-break:keep-all;}
-  .contents_div .mgjeat7-cta-line{ font-size:21px; line-height: 1.3; }
+  .contents_div .mgjeat7-cta-line{ font-size:23px; line-height: 1.3; }
   .contents_div .mgjeat7-cta-sub{ font-size:14px; }
   .contents_div .mgjeat7-nav {gap:5px}
   .contents_div .mgjeat7-nav a{ font-size:10px; padding:5px 7px; border-radius: 9px;}
@@ -1534,5 +1545,55 @@
     window.addEventListener('resize', onScroll, { passive:true });
     onScroll();
   }
+})();
+</script>
+<script>
+/* ===== 스크롤 등장(reveal): 섹션 헤드 + 그리드 카드가 뷰포트에 들어오면 페이드업 ===== */
+(function(){
+  var root = document.currentScript ? document.currentScript.closest('.contents_div') : null;
+  if(!root){
+    var all = document.querySelectorAll('.contents_div');
+    root = all[all.length-1];
+  }
+  if(!root) return;
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 대상: 섹션 헤드 + 그리드 카드(슬라이더 내부 카드는 제외 — 트랙 transform과 충돌 방지) */
+  var targets = [].concat(
+    [].slice.call(root.querySelectorAll('.mgjeat7-sec-head')),
+    [].slice.call(root.querySelectorAll('.mgjeat7-grid > .mgjeat7-card'))
+  );
+  if(!targets.length) return;
+
+  /* JS가 동작할 때만 숨김 클래스 부여 → JS 미동작/구형 브라우저에서는 그대로 노출(점진적 향상) */
+  targets.forEach(function(el){ el.classList.add('mgjeat7-reveal'); });
+
+  /* 같은 그리드 안에서는 카드마다 약간의 시간차(stagger) */
+  function staggerDelay(el){
+    var grid = el.parentElement;
+    if(grid && grid.classList.contains('mgjeat7-grid')){
+      var idx = [].indexOf.call(grid.children, el);
+      return Math.min(idx, 6) * 70;   // 카드당 70ms, 최대 6단계
+    }
+    return 0;
+  }
+
+  if(reduce || !('IntersectionObserver' in window)){
+    targets.forEach(function(el){ el.classList.add('is-revealed'); });
+    return;
+  }
+
+  var io = new IntersectionObserver(function(entries, obs){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var el = en.target;
+      el.style.transitionDelay = staggerDelay(el) + 'ms';
+      el.classList.add('is-revealed');
+      obs.unobserve(el);
+    });
+  }, { root:null, rootMargin:'0px 0px -10% 0px', threshold:0.12 });
+
+  targets.forEach(function(el){ io.observe(el); });
 })();
 </script>
