@@ -1066,19 +1066,18 @@
   max-width:calc(100% - 16px);
   pointer-events:none;
 }
-/* 알약 배경: filter:blur로 가장자리를 흐리게 번지게 해 경계를 누그러뜨림 */
+/* 직사각형 블랙 배경: 블러 없이 평면 처리, 오퍼시티로 농도 조절 */
 .contents_div .mgjeat7-credit::before{
   content:""; position:absolute; inset:0; z-index:-1;
-  background:rgba(2, 2, 2, 0.192);
-  border-radius:999px;
-  -webkit-filter:blur(15px); filter:blur(10px);
+  background:rgba(0, 0, 0, 0.40);
+  border-radius:0;
 }
 /* 텍스트는 선명하게 */
 .contents_div .mgjeat7-credit-t{
   display:block; position:relative;
   font-family:'Pretendard',sans-serif;
   font-size:11px; font-weight:400; line-height:1; color:#fff;
-  padding:5px 9px; letter-spacing:.01em;
+  padding:4px 7px; letter-spacing:.01em;
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 .contents_div .mgjeat7-cardbody{
